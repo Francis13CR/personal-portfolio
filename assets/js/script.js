@@ -1,6 +1,16 @@
-'use strict';
 
+const { createApp } = Vue
 
+const vApp = createApp({
+  data() {
+    return {
+      message: 'Hello Vue!'
+    }
+  }, 
+  mounted() {
+    console.log('Vue app mounted!');
+  }
+}).mount('#vApp');
 
 // element toggle function
 const elementToggleFunc = function (elem) { elem.classList.toggle("active"); }
