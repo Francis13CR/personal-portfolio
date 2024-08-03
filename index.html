@@ -130,57 +130,19 @@
       <div class="container mb-5">
         <h2 class="text-center mt-5">Proyectos Destacados</h2>
         <div class="row">
-          <div class="col-lg-4 col-md-6 mt-5" data-aos="zoom-in-up">
+          <div v-for="proyecto in proyectos" class="col-lg-4 col-md-6 mt-5" data-aos="zoom-in-up">
             <div class="card" style="border:none;">
-              <img src="public/images/img_rectangle_1.png" class="card-img-top" alt="...">
+              <img :src="proyecto.images[0]" class="card-img-top" alt="..." style="height: 300px;">
               <div class="card-body">
-                <h5 class="card-title text-center">Card title</h5>
+                <h5 class="card-title text-center">{{proyecto.title}}</h5>
                 <hr>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <p class="card-text">{{proyecto.subtitle}}</p>
               </div>
               <div class="card-footer border-none">
-                <small class="text-body-secondary">2024</small>
+                <small class="text-body-secondary">Realizado en: {{proyecto.created_at}}</small>
               </div>
             </div>
           </div>
-          <div class="col-lg-4 col-md-6 mt-5" data-aos="zoom-in-up">
-            <div class="card" style="border:none;">
-              <img src="public/images/img_rectangle_1.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">Card title</h5>
-                <hr>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <div class="card-footer border-none">
-                <small class="text-body-secondary">2024</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-5" data-aos="zoom-in-up">
-            <div class="card" style="border:none;">
-              <img src="public/images/img_rectangle_1.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">Card title</h5>
-                <hr>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <div class="card-footer border-none">
-                <small class="text-body-secondary">2024</small>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-6 mt-5" data-aos="zoom-in-up">
-            <div class="card" style="border:none;">
-              <img src="public/images/img_rectangle_1.png" class="card-img-top" alt="...">
-              <div class="card-body">
-                <h5 class="card-title text-center">Card title</h5>
-                <hr>
-                <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-              </div>
-              <div class="card-footer border-none">
-                <small class="text-body-secondary">2024</small>
-              </div>
-            </div>
           </div>
         </div>
       </div>
@@ -219,11 +181,12 @@
     </footer>
     </div>
   </div>
+
   <script src="./assets/js/lib/anime.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <script src="./assets/js/lib/vue.min.js"></script>
+  <script  src="./assets/js/lib/vue.min.js"></script>
   <script src="./assets/js/lib/boostrap.min.js"></script>
-  <script src="./assets/js/script.js"></script>
+  <script type="module" src="./assets/js/script.js?v=0.0.2"></script>
   <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
 </body>

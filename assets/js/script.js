@@ -1,12 +1,13 @@
 
 const { createApp } = Vue
-
+import { getBlogPosts } from '../js/firebase.js';
 const vApp = createApp({
   data() {
     return {
       message: 'Hello Vue!',
       isMobile: false,
       isLoading: true,
+      proyectos: [],
       initialStyles: {
         body: {
           overflow: 'hidden',
@@ -36,7 +37,7 @@ const vApp = createApp({
       },
     }
   }, 
-  mounted() {
+  async mounted() {
     
     var numberOfEls = 200;
     var duration = 1000;
@@ -72,6 +73,7 @@ const vApp = createApp({
     window.addEventListener('resize', this.checkDevice);
     console.log('Vue app mounted!');
     setTimeout(this.finishLoading, 1500);
+    this.proyectos = await getBlogPosts();
   },
   beforeUnmount() {
     window.removeEventListener('resize', this.checkDevice);
