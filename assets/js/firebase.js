@@ -8,15 +8,19 @@
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
-  const firebaseConfig = {
-    apiKey: "AIzaSyDvl_koSWKCARcUZUZQ02J1-OKQeoHmLGQ",
-    authDomain: "portafolio-41e1c.firebaseapp.com",
-    projectId: "portafolio-41e1c",
-    storageBucket: "portafolio-41e1c.appspot.com",
-    messagingSenderId: "283651430287",
-    appId: "1:283651430287:web:64014a6190e2e81019ddfa",
-    measurementId: "G-MZR6XERDR3"
-  };
+// firebase.js
+import config from './config.js';
+let isNetlify = true;
+const firebaseConfig = {
+  apiKey: isNetlify === true ? process.env.API_KEY : config.apiKey,
+  authDomain: isNetlify === true ? process.env.AUTH_DOMAIN : config.authDomain,
+  projectId: isNetlify === true ? process.env.PROJECT_ID : config.projectId,
+  storageBucket: isNetlify === true ? process.env.STORAGE_BUCKET : config.storageBucket,
+  messagingSenderId: isNetlify === true ? process.env.MESSAGING_SENDER_ID : config.messagingSenderId,
+  appId: isNetlify === true ? process.env.APP_ID : config.appId,
+  measurementId: isNetlify === true ? process.env.MEASUREMENT_ID : config.measurementId
+};
+console.log(firebaseConfig);
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
