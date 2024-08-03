@@ -1,26 +1,24 @@
   // Import the functions you need from the SDKs you need
-  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-  import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
-  import { getFirestore, getDocs, collection } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
-  import { getStorage, ref, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.6.1/firebase-storage.js';
+  import { initializeApp }  from 'firebase/app';
+  import { getFirestore, getDocs, collection } from 'firebase/firestore';
+  import { getAnalytics } from "firebase/analytics";
   // TODO: Add SDKs for Firebase products that you want to use
   // https://firebase.google.com/docs/web/setup#available-libraries
 
   // Your web app's Firebase configuration
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // firebase.js
-import config from './config.js';
-let isNetlify = true;
+
 const firebaseConfig = {
-  apiKey: isNetlify === true ? process.env.API_KEY : config.apiKey,
-  authDomain: isNetlify === true ? process.env.AUTH_DOMAIN : config.authDomain,
-  projectId: isNetlify === true ? process.env.PROJECT_ID : config.projectId,
-  storageBucket: isNetlify === true ? process.env.STORAGE_BUCKET : config.storageBucket,
-  messagingSenderId: isNetlify === true ? process.env.MESSAGING_SENDER_ID : config.messagingSenderId,
-  appId: isNetlify === true ? process.env.APP_ID : config.appId,
-  measurementId: isNetlify === true ? process.env.MEASUREMENT_ID : config.measurementId
+  apiKey: process.env.API_KEY,
+  authDomain: process.env.AUTH_DOMAIN,
+  projectId: process.env.PROJECT_ID,
+  storageBucket: process.env.STORAGE_BUCKET,
+  messagingSenderId: process.env.MESSAGING_SENDER_ID,
+  appId: process.env.APP_ID,
+  measurementId: process.env.MEASUREMENT_ID
 };
-console.log(firebaseConfig);
+
 
   // Initialize Firebase
   const app = initializeApp(firebaseConfig);
