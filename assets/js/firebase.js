@@ -10,7 +10,7 @@
   // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 // firebase.js
 import config from './config.js';
-let isNetlify = true;
+let isNetlify = false;
 const firebaseConfig = {
   apiKey: isNetlify === true ? process.env.API_KEY : config.apiKey,
   authDomain: isNetlify === true ? process.env.AUTH_DOMAIN : config.authDomain,
