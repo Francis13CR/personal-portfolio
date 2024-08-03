@@ -4,17 +4,18 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Soy Francis</title>
+  <title>FrancisMC</title>
   <link rel="stylesheet" href="./assets/css/style.css">
   <link rel="stylesheet" href="./assets/js/lib/bootstrap.min.css">
   <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
 </head>
-<body>
-  <div id="vApp">
+<body v-bind:style="bodyStyles">
+  <div  id="vApp">
+    <div  v-show="!isLoading">
     <header class="bg-dark border-bottom">
       <nav class="navbar bg-dark fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid"> <!-- Cambiado de container-fluid a container -->
-          <a class="navbar-brand" href="#">Inicio</a>
+          <a class="navbar-brand" href="#"><ion-icon name="home-outline"></ion-icon></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
@@ -216,8 +217,9 @@
         </div>
       </div>
     </footer>
+    </div>
   </div>
-
+  <script src="./assets/js/lib/anime.min.js"></script>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <script src="./assets/js/lib/vue.min.js"></script>
   <script src="./assets/js/lib/boostrap.min.js"></script>
