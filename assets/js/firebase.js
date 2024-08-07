@@ -27,17 +27,17 @@ const firebaseConfig = {
   let proyectos = [];
   export async function getBlogPosts() {
     const querySnapshot = await getDocs(collection(db, 'proyectos'));
-    querySnapshot.forEach((doc) => {
-      proyectos.push(doc.data());
-      console.log(doc.id, " => ", doc.data());
-    });
-    //pasar el createdAt a un objeto Date js
-    proyectos = proyectos.map((proyecto) => {
-      return {
-        ...proyecto,
-       created_at: new Date(proyecto.created_at.seconds * 1000).toLocaleDateString(),
-       subtitle: proyecto.description.substring(0, 170) + '...'
-      }
-    });
+    // querySnapshot.forEach((doc) => {
+    //   proyectos.push(doc.data());
+    //   console.log(doc.id, " => ", doc.data());
+    // });
+    // //pasar el createdAt a un objeto Date js
+    // proyectos = proyectos.map((proyecto) => {
+    //   return {
+    //     ...proyecto,
+    //    created_at: new Date(proyecto.created_at.seconds * 1000).toLocaleDateString(),
+    //    subtitle: proyecto.description.substring(0, 170) + '...'
+    //   }
+    // });
     return proyectos;
   }
