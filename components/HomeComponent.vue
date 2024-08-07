@@ -1,6 +1,6 @@
 <!-- src/components/HomeComponent.vue -->
 <template>
-  <div  v-show="!isLoading" >
+  <div   >
     <div >
     <!-- <header class="bg-dark border-bottom">
       <nav class="navbar bg-dark fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
@@ -33,7 +33,7 @@
       <div class="container mt-5">
         <div class="row p-5">
           <div class="col-md-6 col-sm-6 " :class="{'order-md-1': isMobile, 'd-flex': !isMobile}" data-aos="fade-right">
-            <img src="/images/yo.jpg" alt="Image" class="col-md-6 col-sm-6 mb-3 me-5 profile-img" style="border-radius: 50%;" />
+            <img src="../assets/images/yo.jpg" alt="Image" class="col-md-6 col-sm-6 mb-3 me-5 profile-img" style="border-radius: 50%;" />
             <div class="col-sm-12 mt-4">
               <h2>Francis Melendez Chaves<br /></h2>
               <span class="text-secondary"> Full Stack Developer / UX <br /></span>
@@ -56,7 +56,7 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <img src="/images/icon-design.svg" alt="design icon" class="img-fluid rounded-start">
+                  <img src="../assets/images/icon-design.svg" alt="design icon" class="img-fluid rounded-start">
                 </div>
                 <div class="col-10">
                   <div class="card-body">
@@ -71,7 +71,7 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <img src="/images/icon-dev.svg" alt="design icon" class="img-fluid rounded-start">
+                  <img src="../assets/images/icon-dev.svg" alt="design icon" class="img-fluid rounded-start">
                 </div>
                 <div class="col-10">
                   <div class="card-body">
@@ -86,7 +86,7 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <img src="/images/icon-app.svg" alt="design icon" class="img-fluid rounded-start">
+                  <img src="../assets/images/icon-app.svg" alt="design icon" class="img-fluid rounded-start">
                 </div>
                 <div class="col-10">
                   <div class="card-body">
@@ -101,7 +101,7 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <img src="/images/icon-db.svg" alt="design icon" class="img-fluid rounded-start">
+                  <img src="../assets/images/icon-db.svg" alt="design icon" class="img-fluid rounded-start">
                 </div>
                 <div class="col-10">
                   <div class="card-body">
@@ -226,33 +226,33 @@ export default {
     var radius = Math.sqrt(midScreenX * midScreenX + midScreenY * midScreenY);
     var fragment = document.createDocumentFragment();
 
-    for (var i = 0; i < numberOfEls; i++) {
-      var hue = Math.round((360 / numberOfEls) * i);
-      var angle = Math.random() * Math.PI * 2;
-      var el = document.createElement("div");
-      el.classList.add("particule");
-      el.style.backgroundColor = "hsl(" + hue + ", 40%, 60%)";
-      el.style.width = "1px";
-      el.style.height = "1px";
-      anime({
-        targets: el,
-        width: ["1px", "10px"],
-        height: ["1px", "10px"],
-        left: [midScreenX + "px", Math.cos(angle) * radius + midScreenX + "px"],
-        top: [midScreenY + "px", Math.sin(angle) * radius + midScreenY + "px"],
-        delay: (duration / numberOfEls) * i,
-        duration: duration,
-        easing: "easeInExpo",
-        loop: false,
-      });
-      fragment.appendChild(el);
-    }
+    // for (var i = 0; i < numberOfEls; i++) {
+    //   var hue = Math.round((360 / numberOfEls) * i);
+    //   var angle = Math.random() * Math.PI * 2;
+    //   var el = document.createElement("div");
+    //   el.classList.add("particule");
+    //   el.style.backgroundColor = "hsl(" + hue + ", 40%, 60%)";
+    //   el.style.width = "1px";
+    //   el.style.height = "1px";
+    //   anime({
+    //     targets: el,
+    //     width: ["1px", "10px"],
+    //     height: ["1px", "10px"],
+    //     left: [midScreenX + "px", Math.cos(angle) * radius + midScreenX + "px"],
+    //     top: [midScreenY + "px", Math.sin(angle) * radius + midScreenY + "px"],
+    //     delay: (duration / numberOfEls) * i,
+    //     duration: duration,
+    //     easing: "easeInExpo",
+    //     loop: false,
+    //   });
+    //   fragment.appendChild(el);
+    // }
 
     document.body.appendChild(fragment);
     this.checkDevice();
     window.addEventListener("resize", this.checkDevice);
     console.log("Vue app mounted!");
-    setTimeout(this.finishLoading, 1500);
+    setTimeout(this.finishLoading, 0);
     this.proyectos = await getBlogPosts();
   },
   beforeUnmount() {
