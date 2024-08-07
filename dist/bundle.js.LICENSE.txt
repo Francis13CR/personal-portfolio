@@ -1,3 +1,17 @@
+/*!
+  * Bootstrap v5.3.3 (https://getbootstrap.com/)
+  * Copyright 2011-2024 The Bootstrap Authors (https://github.com/twbs/bootstrap/graphs/contributors)
+  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
+  */
+
+/*!
+  * vue-router v4.4.3
+  * (c) 2024 Eduardo San Martin Morote
+  * @license MIT
+  */
+
+/*! #__NO_SIDE_EFFECTS__ */
+
 /**
  * @license
  * Copyright 2017 Google LLC
@@ -133,6 +147,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+
+/**
+* @vue/shared v3.4.36
+* (c) 2018-present Yuxi (Evan) You and Vue contributors
+* @license MIT
+**/
 
 /** @license
 

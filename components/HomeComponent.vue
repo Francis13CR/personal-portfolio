@@ -1,7 +1,7 @@
 <!-- src/components/HomeComponent.vue -->
 <template>
-  <div v-bind:style="bodyStyles">
-    <div  v-show="!isLoading">
+  <div  v-show="!isLoading" >
+    <div >
     <!-- <header class="bg-dark border-bottom">
       <nav class="navbar bg-dark fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid"> 
@@ -175,6 +175,12 @@
 
 <script>
 import { getBlogPosts } from "../assets/js/firebase.js";
+import 'aos/dist/aos.css';
+
+// Importa y configura AOS
+import AOS from 'aos';
+import anime from 'animejs/lib/anime.es.js';
+
 export default {
   name: "HomeComponent",
   data() {
