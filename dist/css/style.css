@@ -1,0 +1,55 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+header {
+  width: 100%;
+  overflow-x: hidden;
+}
+
+header, footer, .border-bottom {
+  margin: 0;
+  padding: 0;
+}
+
+
+
+.particule {
+  position: absolute;
+}
+
+
+.border-none {
+  border: none!important;
+}
+
+.card:hover {
+  transform: scale(1.05);
+  transition: transform 0.3s;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  transition: background-color 0.3s;
+}
+.navbar-collapse {
+  transition: max-height 0.5s ease-in-out;
+}
+
+@media (max-width: 768px) {
+  .profile-img {
+    max-width: 150px!important; /* Ajusta este valor según sea necesario */
+  }
+  .navbar-nav {
+    text-align: center;
+  }
+  .navbar-toggler {
+    margin-left: auto;
+  }
+ 
+  
+}
