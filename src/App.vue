@@ -12,14 +12,14 @@
                 <li class="nav-item">
                   <router-link to="/" class="nav-link">Sobre mi</router-link>
                 </li>
-                <li class="nav-item">
+                <!-- <li class="nav-item">
                   <router-link to="/projects" class="nav-link">Proyectos</router-link>
                 </li>
                 <li class="nav-item">
                   <router-link to="/blog" class="nav-link">Blog</router-link>
-                </li>
+                </li> -->
                 <li class="nav-item">
-                  <router-link to="/contact" class="nav-link">Contacto</router-link>
+                  <a @click="showContact()" class="nav-link pointer">Contacto</a>
                 </li>
               </ul>
             </div>
@@ -38,12 +38,70 @@
   </template>
   
   <script>
+  import Swal from 'sweetalert2';
+  import "@fortawesome/fontawesome-free/css/all.min.css";
+
   export default {
-    name: 'App'
+    name: 'App',
+    components: {
+      // Your components here
+    },
+    data() {
+      return {
+        // Your data properties here
+      };
+    },
+    methods: {
+      showContact() {
+        // SweetAlert
+        Swal.fire({
+          title: "¡Contáctame! 📩",
+          html: `
+            <p><i class="fa-solid fa-envelope"></i>  <strong>Correo:</strong> <a id="correo" href="mailto:francismelendez134@gmail.com">francismelendez134@gmail.com</a> <button id="copiarCorreoBtn">📋</button></p>
+            <p><i class="fa-brands fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/francismch/" target="_blank">Mi perfil</a></p>
+          `,
+          icon: "info",
+          showCloseButton: true,
+          showConfirmButton: false,
+          didOpen: () => {
+            console.log("SweetAlert abierto");
+            // Agregar evento al botón después de que el SweetAlert se haya mostrado
+            const copiarCorreoBtn = document.getElementById("copiarCorreoBtn");
+            if (copiarCorreoBtn) {
+              copiarCorreoBtn.addEventListener("click", this.copiarCorreo);
+            }
+          },
+          didDestroy: () => {
+            // Limpiar el evento al cerrar el SweetAlert
+            const copiarCorreoBtn = document.getElementById("copiarCorreoBtn");
+            if (copiarCorreoBtn) {
+              copiarCorreoBtn.removeEventListener("click", this.copiarCorreo);
+            }
+          }
+        }).then(() => {
+          console.log("SweetAlert cerrado");
+        });
+      },
+      copiarCorreo() {
+        const correo = document.getElementById("correo").innerText;
+        navigator.clipboard.writeText(correo).then(() => {
+          Swal.fire({
+            title: "¡Copiado!",
+            text: "Correo copiado al portapapeles",
+            icon: "success",
+            timer: 1500,
+            showConfirmButton: false
+          });
+        });
+      }
+    },
   }
+
   </script>
   
   <style>
-  /* Your styles here */
+  .pointer {
+    cursor: pointer;
+  }
   </style>
   

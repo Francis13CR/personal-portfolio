@@ -56,7 +56,7 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <img src="../assets/images/icon-design.svg" alt="design icon" class="img-fluid rounded-start">
+                  <i class="fa-solid fa-object-group fa-2xl" style="color: #FFD43B;"></i>
                 </div>
                 <div class="col-10">
                   <div class="card-body">
@@ -71,7 +71,7 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <img src="../assets/images/icon-dev.svg" alt="design icon" class="img-fluid rounded-start">
+                  <i class="fa-solid fa-code fa-2xl" style="color: #FFD43B;"></i>
                 </div>
                 <div class="col-10">
                   <div class="card-body">
@@ -86,7 +86,7 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <img src="../assets/images/icon-app.svg" alt="design icon" class="img-fluid rounded-start">
+                  <i class="fa-solid fa-mobile-screen-button fa-2xl" style="color: #FFD43B;"></i>
                 </div>
                 <div class="col-10">
                   <div class="card-body">
@@ -101,12 +101,12 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <img src="../assets/images/icon-db.svg" alt="design icon" class="img-fluid rounded-start">
+                  <i class="fa-solid fa-database fa-2xl" style="color: #FFD43B;"></i>
                 </div>
                 <div class="col-10">
                   <div class="card-body">
                     <h5 class="card-title">Gestión de base de datos</h5>
-                    <p class="card-text">Conocimientos en SQL, MySQL, MariaDB y OracleSQL.</p>
+                    <p class="card-text">Conocimientos en SQL, MySQL, MariaDB y OracleSQL.<br> Además de conocimiento básico en Docker</p>
                   </div>
                 </div>
               </div>
@@ -140,18 +140,20 @@
 
     <footer class="container" data-aos="fade-up">
       <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-12">
           <h2>Trabajemos Juntos</h2>
           <p>
             ¡Será un placer para mí atenderte y discutir sobre tus proyectos! No dudes en contactarme a través de mis redes sociales o por correo electrónico.<br />Déjame ayudarte a transformar tus ideas en realidad digital.
           </p>
           <div class="d-flex">
-            <img src="" alt="Discord" class="me-3" />
-            <img src="" alt="Facebook" class="me-3" />
-            <img src="" alt="Instagram" class="me-3" />
+            <!-- instagram fontawesome -->
+            <a href="https://www.instagram.com/francis._.13/" target="_blank" class="btn  me-2"><i class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.linkedin.com/in/francismch/" target="_blank" class="btn  me-2"><i class="fa-brands fa-linkedin"></i></a>
+            <!-- correo -->
+            <a href="mailto:francismelendez134@gmail.com"  target="_blank" class="btn  me-2"><i class="fa-solid fa-envelope"></i></a>
           </div>
         </div>
-        <div class="col-md-6">
+        <!-- <div class="col-md-6">
           <div class="d-flex flex-column">
             <div class="mb-3">
               <input type="text" class="form-control" name="write_something" placeholder="Nombre" />
@@ -166,7 +168,7 @@
               <ion-icon name="send-outline"></ion-icon> Enviar
             </button>
           </div>
-        </div>
+        </div> -->
       </div>
     </footer>
     
@@ -176,7 +178,7 @@
 <script>
 import { getBlogPosts } from "../assets/js/firebase.js";
 import 'aos/dist/aos.css';
-
+import "@fortawesome/fontawesome-free/css/all.min.css";
 // Importa y configura AOS
 import AOS from 'aos';
 import anime from 'animejs/lib/anime.es.js';
