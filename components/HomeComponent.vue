@@ -1,7 +1,7 @@
 <!-- src/components/HomeComponent.vue -->
 <template>
-  <div   >
-    <div >
+  <div>
+    <div>
     <!-- <header class="bg-dark border-bottom">
       <nav class="navbar bg-dark fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid"> 
@@ -33,7 +33,7 @@
       <div class="container mt-5">
         <div class="row p-5">
           <div class="col-md-6 col-sm-6 " :class="{'order-md-1': isMobile, 'd-flex': !isMobile}" data-aos="fade-right">
-            <img src="../assets/images/yo.jpg" alt="Image" class="col-md-6 col-sm-6 mb-3 me-5 profile-img" style="border-radius: 50%;" />
+            <img src="../assets/images/yo2.png" alt="Image" class="col-md-6 col-sm-6 mb-3 me-5 profile-img" style="border-radius: 50%;" />
             <div class="col-sm-12 mt-4">
               <h2>Francis Melendez Chaves<br /></h2>
               <span class="text-secondary"> Full Stack Developer / UX <br /></span>
@@ -120,9 +120,23 @@
       <div class="container mb-5">
         <h2 class="text-center mt-5">Proyectos Destacados</h2>
         <div class="row">
-          <div v-for="proyecto in proyectos" class="col-lg-4 col-md-6 mt-5" data-aos="zoom-in-up">
-            <div class="card" style="border:none;">
-              <img :src="proyecto.images[0]" class="card-img-top" alt="..." style="height: 300px;">
+                   <div v-for="proyecto in proyectos" class="col-lg-4 col-md-6 mt-5" data-aos="zoom-in-up" v-show="proyecto.status == 1">
+            <div class="card" style="border:none; position: relative;">
+              <img 
+                :src="proyecto.images ? proyecto.images[0] : ''" 
+                class="card-img-top img-thumbnail" 
+                alt="..." 
+                style="height: 200px; object-fit: cover;" 
+                @mouseover="showEyeIcon($event)" 
+                @mouseleave="hideEyeIcon($event)" 
+                @click="openImage(proyecto.images ? proyecto.images[0] : '')"
+              />
+              <div 
+                class="eye-icon"    @click="openImage(proyecto.images ? proyecto.images[0] : '')"
+                style="position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%); display: none; cursor: pointer;"
+              >
+                <i class="fa-solid fa-eye fa-2x" style="color: white;"></i>
+              </div>
               <div class="card-body">
                 <h5 class="card-title text-center">{{proyecto.title}}</h5>
                 <hr>
@@ -179,6 +193,7 @@
 import { getBlogPosts } from "../assets/js/firebase.js";
 import 'aos/dist/aos.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
+import Swal from 'sweetalert2';
 // Importa y configura AOS
 import AOS from 'aos';
 import anime from 'animejs/lib/anime.es.js';
@@ -261,6 +276,32 @@ export default {
     window.removeEventListener("resize", this.checkDevice);
   },
   methods: {
+    showEyeIcon(event) {
+      const eyeIcon = event.target.nextElementSibling;
+      if (eyeIcon) {
+        eyeIcon.style.display = 'block';
+      }
+    },
+    hideEyeIcon(event) {
+      const eyeIcon = event.target.nextElementSibling;
+      if (eyeIcon) {
+        eyeIcon.style.display = 'none';
+      }
+    },
+    openImage(imageUrl) {
+      if (imageUrl) {
+        Swal.fire({
+          imageUrl: imageUrl,
+          imageAlt: 'Imagen del proyecto',
+          showCloseButton: true,
+          showConfirmButton: false,
+          background: '#333',
+          customClass: {
+            popup: 'swal-custom-popup'
+          }
+        });
+      }
+    },
     checkDevice() {
       this.isMobile = window.matchMedia("(max-width: 768px)").matches;
     },
@@ -278,3 +319,16 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .eye-icon {
+    transition: opacity 0.3s ease;
+  }
+  .card:hover .eye-icon {
+    display: block !important;
+    background-color: black;
+    border-radius: 50%;
+    padding: 10px;
+  }
+
+  </style>
