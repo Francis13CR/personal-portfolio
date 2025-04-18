@@ -52,7 +52,7 @@
       <div class="container mb-5">
         <h2 class="text-center mt-5">Lo que hago</h2>
         <div class="row">
-          <div class="col-md-6 mt-5" data-aos="fade-right">
+          <div class="col-md-6 mt-5 col-xs-12 col-12" data-aos="fade-right">
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
@@ -67,7 +67,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 mt-5" data-aos="fade-left">
+          <div class="col-md-6 col-xs-12 col-12 mt-5" data-aos="fade-left">
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
@@ -82,7 +82,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 mt-5" data-aos="fade-right">
+          <div class="col-md-6 col-xs-12 col-12 mt-5" data-aos="fade-right">
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
@@ -97,7 +97,7 @@
               </div>
             </div>
           </div>
-          <div class="col-md-6 mt-5" data-aos="fade-left">
+          <div class="col-md-6 col-xs-12 col-12 mt-5" data-aos="fade-left">
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
@@ -120,7 +120,7 @@
       <div class="container mb-5">
         <h2 class="text-center mt-5">Proyectos Destacados</h2>
         <div class="row">
-                   <div v-for="proyecto in proyectos" class="col-lg-4 col-md-6 mt-5"  v-show="proyecto.status == 1">
+                   <div v-for="proyecto in proyectos" class="col-lg-4 col-md-6 col-xs-12 col-12 mt-5"  v-show="proyecto.status == 1">
             <div class="card" style="border:none; position: relative;">
               <img 
                 :src="proyecto.images ? proyecto.images[0] : ''" 
