@@ -120,11 +120,11 @@
       <div class="container mb-5">
         <h2 class="text-center mt-5">Proyectos Destacados</h2>
         <div class="row">
-                   <div v-for="proyecto in proyectos" class="col-lg-4 col-md-6 mt-5" data-aos="zoom-in-up" v-show="proyecto.status == 1">
+                   <div v-for="proyecto in proyectos" class="col-lg-4 col-md-6 mt-5"  v-show="proyecto.status == 1">
             <div class="card" style="border:none; position: relative;">
               <img 
                 :src="proyecto.images ? proyecto.images[0] : ''" 
-                class="card-img-top img-thumbnail" 
+                class="card-img-top img-thumbnail img-fluid" 
                 alt="..." 
                 style="height: 200px; object-fit: cover;" 
                 @mouseover="showEyeIcon($event)" 
@@ -313,7 +313,9 @@ export default {
         particule.remove();
       });
       this.$nextTick(() => {
-        AOS.init(); // Inicializa AOS después de que el DOM esté listo
+        AOS.init({
+          disable: 'mobile', // Desactiva en dispositivos móviles
+        });
       });
     },
   },
@@ -330,5 +332,9 @@ export default {
     border-radius: 50%;
     padding: 10px;
   }
-
-  </style>
+  .profile-img {
+    width: 100%;
+    height: auto;
+    max-width: 300px;
+  }
+</style>

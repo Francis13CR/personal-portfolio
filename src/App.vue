@@ -4,22 +4,31 @@
         <nav class="navbar bg-dark fixed-top navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
           <div class="container-fluid">
             <a class="navbar-brand" href="#"><ion-icon name="home-outline"></ion-icon></a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarNav"
+              aria-controls="navbarNav"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+             
+            >
               <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
+            <div class="collapse navbar-collapse" id="navbarNav" ref="navbarNav" >
               <ul class="navbar-nav ms-auto">
                 <li class="nav-item">
-                  <router-link to="/" class="nav-link">Sobre mi</router-link>
+                  <router-link to="/" class="nav-link" @click="closeNavbar">Sobre mi</router-link>
                 </li>
                 <!-- <li class="nav-item">
-                  <router-link to="/projects" class="nav-link">Proyectos</router-link>
+                  <router-link to="/projects" class="nav-link" @click="closeNavbar">Proyectos</router-link>
                 </li>
                 <li class="nav-item">
-                  <router-link to="/blog" class="nav-link">Blog</router-link>
+                  <router-link to="/blog" class="nav-link" @click="closeNavbar">Blog</router-link>
                 </li> -->
                 <li class="nav-item">
-                  <a @click="showContact()" class="nav-link pointer">Contacto</a>
+                  <a @click="showContact(); closeNavbar()" class="nav-link pointer">Contacto</a>
                 </li>
               </ul>
             </div>
@@ -40,7 +49,7 @@
   <script>
   import Swal from 'sweetalert2';
   import "@fortawesome/fontawesome-free/css/all.min.css";
-
+  // Importa Bootstrap JS
   export default {
     name: 'App',
     components: {
@@ -51,7 +60,21 @@
         // Your data properties here
       };
     },
+    mounted() {
+      // Agregar un evento global para cerrar el navbar al hacer clic fuera
+      document.addEventListener('click', this.handleOutsideClick);
+    },
+    beforeUnmount() {
+      // Eliminar el evento global al desmontar el componente
+      document.removeEventListener('click', this.handleOutsideClick);
+    },
     methods: {
+      handleOutsideClick(event) {
+        const navbar = this.$refs.navbarNav;
+        if (navbar && !navbar.contains(event.target)) {
+          this.closeNavbar();
+        }
+      },
       showContact() {
         // SweetAlert
         Swal.fire({
@@ -93,6 +116,13 @@
             showConfirmButton: false
           });
         });
+      },
+      closeNavbar() {
+        const navbar = this.$refs.navbarNav;
+        if (navbar) {
+          // le quitamos la clase show al navbar
+          navbar.classList.remove("show");
+        }
       }
     },
   }
