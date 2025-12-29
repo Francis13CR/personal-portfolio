@@ -24,7 +24,7 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const db = getFirestore(app);
-  
+//si  
   export async function getBlogPosts() {
     let proyectos = [];
     const querySnapshot = await getDocs(collection(db, 'proyectos'));
