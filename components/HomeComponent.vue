@@ -33,14 +33,17 @@
       <div class="container mt-5">
         <div class="row p-5">
           <div class="col-md-6 col-sm-6 " :class="{'order-md-1': isMobile, 'd-flex': !isMobile}" data-aos="fade-right">
-            <img src="../assets/images/yo2.png" alt="Image" class="col-md-6 col-sm-6 mb-3 me-5 profile-img" style="border-radius: 50%;" />
+            <img src="../assets/images/yo2.png" alt="Francis Melendez" class="mb-3 me-5 profile-img" />
             <div class="col-sm-12 mt-4">
               <h2>Francis Melendez Chaves<br /></h2>
-              <span class="text-secondary"> Full Stack Developer / UX <br /></span>
+              <span class="text-secondary"> Full Stack Developer | Supervisor de Programación <br /></span>
               <hr>
-              <span>¡Hola! Soy un joven apasionado de la tecnología, con 22 años de edad, que encuentra en el desarrollo
-                web su campo de acción. Me considero un eterno estudiante, siempre en búsqueda de nuevos conocimientos
-                y con una curiosidad insaciable por comprender el porqué de las cosas.</span>
+              <span>Desarrollador de Software con más de 4 años de experiencia en desarrollo full stack y liderazgo técnico. 
+                Actualmente me desempeño como Supervisor de Programación en Facture.cr, donde lidero equipos de desarrollo, 
+                realizo code review y gestiono el despliegue de cambios en sistemas productivos de misión crítica utilizados por miles de clientes.
+                <br><br>
+                Especializado en Vue.js, PHP y MySQL, con experiencia en Docker, Java y Python. Mi enfoque se centra en la calidad del código, 
+                mejora continua, experiencia de usuario y eficiencia operativa, combinando habilidades técnicas con una visión práctica del negocio.</span>
             </div>
             
           </div>
@@ -50,18 +53,18 @@
 
     <div class="border-bottom mb-5" data-aos="fade-down">
       <div class="container mb-5">
-        <h2 class="text-center mt-5">Lo que hago</h2>
+        <h2 class="text-center mt-5">Experiencia y Habilidades</h2>
         <div class="row">
           <div class="col-md-6 mt-5 col-xs-12 col-12" data-aos="fade-right">
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <i class="fa-solid fa-object-group fa-2xl" style="color: #FFD43B;"></i>
+                  <i class="fa-solid fa-users-gear fa-2xl" style="color: #FFD43B;"></i>
                 </div>
                 <div class="col-10">
                   <div class="card-body">
-                    <h5 class="card-title">Diseño Web</h5>
-                    <p class="card-text">Diseño de sitios web de alta calidad con diseño minimalista y moderno.</p>
+                    <h5 class="card-title">Liderazgo Técnico</h5>
+                    <p class="card-text">Supervisión de equipos de desarrollo, gestión de tickets, planificación de proyectos y mentoría de desarrolladores.</p>
                   </div>
                 </div>
               </div>
@@ -75,8 +78,8 @@
                 </div>
                 <div class="col-10">
                   <div class="card-body">
-                    <h5 class="card-title">Desarrollo Web</h5>
-                    <p class="card-text">Aplicaciones web de alta calidad con diseño responsivo y optimización.</p>
+                    <h5 class="card-title">Desarrollo Full Stack</h5>
+                    <p class="card-text">Desarrollo de aplicaciones web con Vue.js, PHP y MySQL. Experiencia en arquitectura de software y APIs REST.</p>
                   </div>
                 </div>
               </div>
@@ -86,12 +89,12 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <i class="fa-solid fa-mobile-screen-button fa-2xl" style="color: #FFD43B;"></i>
+                  <i class="fa-solid fa-code-branch fa-2xl" style="color: #FFD43B;"></i>
                 </div>
                 <div class="col-10">
                   <div class="card-body">
-                    <h5 class="card-title">Aplicaciones Móviles</h5>
-                    <p class="card-text">Aplicaciones móviles de alta calidad con diseño responsivo y optimización.</p>
+                    <h5 class="card-title">Code Review & DevOps</h5>
+                    <p class="card-text">Revisión de código, validación y despliegue de cambios en producción. Experiencia con Docker y gestión de entornos.</p>
                   </div>
                 </div>
               </div>
@@ -101,15 +104,108 @@
             <div class="card mb-3 bg-dark-subtle">
               <div class="row g-0">
                 <div class="col-2 d-flex align-items-center justify-content-center">
-                  <i class="fa-solid fa-database fa-2xl" style="color: #FFD43B;"></i>
+                  <i class="fa-solid fa-shield-halved fa-2xl" style="color: #FFD43B;"></i>
                 </div>
                 <div class="col-10">
                   <div class="card-body">
-                    <h5 class="card-title">Gestión de base de datos</h5>
-                    <p class="card-text">Conocimientos en SQL, MySQL, MariaDB y OracleSQL.<br> Además de conocimiento básico en Docker</p>
+                    <h5 class="card-title">Sistemas de Misión Crítica</h5>
+                    <p class="card-text">Desarrollo y mantenimiento de plataformas productivas utilizadas por miles de clientes, con enfoque en estabilidad y seguridad.</p>
                   </div>
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-bottom mb-5" data-aos="fade-up">
+      <div class="container mb-5">
+        <h2 class="text-center mt-5">Experiencia Profesional</h2>
+        <div class="row mt-5">
+          <div class="col-12">
+            <div class="card bg-dark-subtle">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="card-title">Desarrollador de Software & Supervisor de Programación</h4>
+                    <h5 class="text-warning">Facture.cr</h5>
+                  </div>
+                  <span class="badge bg-primary">Enero 2024 - Actualidad</span>
+                </div>
+                <hr>
+                <ul class="mt-3">
+                  <li>Liderazgo técnico y supervisión del departamento de programación, asegurando calidad y continuidad operativa</li>
+                  <li>Gestión end-to-end del ciclo de tickets: análisis, priorización, asignación, seguimiento y cierre</li>
+                  <li>Revisión de código (code review), validación y despliegue de cambios en producción</li>
+                  <li>Supervisión y mentoría de practicantes y desarrolladores en formación</li>
+                  <li>Participación en planificación, estimación y priorización de proyectos tecnológicos</li>
+                  <li>Desarrollo de soluciones con Vue.js, PHP y MySQL para plataformas de alta disponibilidad</li>
+                </ul>
+                <div class="mt-3">
+                  <span class="badge bg-secondary me-2">Vue.js</span>
+                  <span class="badge bg-secondary me-2">PHP</span>
+                  <span class="badge bg-secondary me-2">MySQL</span>
+                  <span class="badge bg-secondary me-2">Docker</span>
+                  <span class="badge bg-secondary me-2">Git</span>
+                  <span class="badge bg-secondary me-2">Liderazgo Técnico</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 mt-4">
+            <div class="card bg-dark-subtle">
+              <div class="card-body">
+                <div class="d-flex justify-content-between align-items-start">
+                  <div>
+                    <h4 class="card-title">Desarrollador Full Stack (Jornada Parcial)</h4>
+                    <h5 class="text-warning">Facture.cr</h5>
+                    <small class="text-muted">Esparza, Puntarenas, Costa Rica</small>
+                  </div>
+                  <span class="badge bg-primary">Septiembre 2021 - Enero 2024</span>
+                </div>
+                <hr>
+                <ul class="mt-3">
+                  <li>Apoyo al desarrollo web y mantenimiento de funcionalidades</li>
+                  <li>Integración de herramientas internas y soporte técnico</li>
+                </ul>
+                <div class="mt-3">
+                  <span class="badge bg-secondary me-2">PHP</span>
+                  <span class="badge bg-secondary me-2">MySQL</span>
+                  <span class="badge bg-secondary me-2">JavaScript</span>
+                  <span class="badge bg-secondary me-2">APIs</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="border-bottom mb-5" data-aos="fade-up">
+      <div class="container mb-5">
+        <h2 class="text-center mt-5">Stack Tecnológico</h2>
+        <div class="row mt-5">
+          <div class="col-md-6">
+            <h4 class="text-center mb-4">Tecnologías Principales</h4>
+            <div class="d-flex flex-wrap justify-content-center">
+              <span class="badge bg-warning text-dark me-2 mb-2 p-3 fs-6">Vue.js</span>
+              <span class="badge bg-warning text-dark me-2 mb-2 p-3 fs-6">PHP</span>
+              <span class="badge bg-warning text-dark me-2 mb-2 p-3 fs-6">MySQL</span>
+              <span class="badge bg-warning text-dark me-2 mb-2 p-3 fs-6">JavaScript</span>
+              <span class="badge bg-warning text-dark me-2 mb-2 p-3 fs-6">Git</span>
+              <span class="badge bg-warning text-dark me-2 mb-2 p-3 fs-6">Bootstrap</span>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h4 class="text-center mb-4">Otras Tecnologías</h4>
+            <div class="d-flex flex-wrap justify-content-center">
+              <span class="badge bg-secondary me-2 mb-2 p-3 fs-6">Docker</span>
+              <span class="badge bg-secondary me-2 mb-2 p-3 fs-6">Java</span>
+              <span class="badge bg-secondary me-2 mb-2 p-3 fs-6">Python</span>
+              <span class="badge bg-secondary me-2 mb-2 p-3 fs-6">Firebase</span>
+              <span class="badge bg-secondary me-2 mb-2 p-3 fs-6">Webpack</span>
+              <span class="badge bg-secondary me-2 mb-2 p-3 fs-6">REST APIs</span>
             </div>
           </div>
         </div>
@@ -120,19 +216,18 @@
       <div class="container mb-5">
         <h2 class="text-center mt-5">Proyectos Destacados</h2>
         <div class="row">
-                   <div v-for="proyecto in proyectos" class="col-lg-4 col-md-6 col-xs-12 col-12 mt-5"  v-show="proyecto.status == 1">
-            <div class="card" style="border:none; position: relative;">
+          <div v-for="proyecto in proyectos" :key="proyecto.id" class="col-lg-4 col-md-6 col-xs-12 col-12 mt-5" v-show="proyecto.status == 1">
+            <div class="card" style="border:none; position: relative;" @click="goToProject(proyecto)">
               <img 
                 :src="proyecto.images ? proyecto.images[0] : ''" 
                 class="card-img-top img-thumbnail img-fluid" 
                 alt="..." 
                 style="height: 200px; object-fit: cover;" 
                 @mouseover="showEyeIcon($event)" 
-                @mouseleave="hideEyeIcon($event)" 
-                @click="openImage(proyecto.images ? proyecto.images[0] : '')"
+                @mouseleave="hideEyeIcon($event)"
               />
               <div 
-                class="eye-icon"    @click="openImage(proyecto.images ? proyecto.images[0] : '')"
+                class="eye-icon"
                 style="position: absolute; top: 20%; left: 50%; transform: translate(-50%, -50%); display: none; cursor: pointer;"
               >
                 <i class="fa-solid fa-eye fa-2x" style="color: white;"></i>
@@ -147,7 +242,6 @@
               </div>
             </div>
           </div>
-          </div>
         </div>
       </div>
     </div>
@@ -157,7 +251,9 @@
         <div class="col-md-12">
           <h2>Trabajemos Juntos</h2>
           <p>
-            ¡Será un placer para mí atenderte y discutir sobre tus proyectos! No dudes en contactarme a través de mis redes sociales o por correo electrónico.<br />Déjame ayudarte a transformar tus ideas en realidad digital.
+            ¿Tienes un proyecto en mente o necesitas consultoría técnica? Con más de 4 años de experiencia en desarrollo full stack y liderazgo técnico, 
+            puedo ayudarte a llevar tus ideas al siguiente nivel.<br />
+            Especializado en desarrollo web con Vue.js, PHP y MySQL, estoy disponible para proyectos freelance, consultoría técnica o colaboraciones.
           </p>
           <div class="d-flex">
             <!-- instagram fontawesome -->
@@ -186,6 +282,7 @@
       </div>
     </footer>
     
+    </div>
   </div>
 </template>
 
@@ -270,7 +367,9 @@ export default {
     window.addEventListener("resize", this.checkDevice);
     console.log("Vue app mounted!");
     setTimeout(this.finishLoading, 0);
+    this.proyectos = [];
     this.proyectos = await getBlogPosts();
+    console.log(this.proyectos);
   },
   beforeUnmount() {
     window.removeEventListener("resize", this.checkDevice);
@@ -301,6 +400,9 @@ export default {
           }
         });
       }
+    },
+    goToProject(proyecto) {
+      this.$router.push({ path: `/projects/${proyecto.title}`, query: { id: proyecto.id } });
     },
     checkDevice() {
       this.isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -333,8 +435,18 @@ export default {
     padding: 10px;
   }
   .profile-img {
-    width: 100%;
-    height: auto;
-    max-width: 300px;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .profile-img {
+      width: 200px;
+      height: 200px;
+    }
   }
 </style>

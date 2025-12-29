@@ -24,11 +24,12 @@ const firebaseConfig = {
   const app = initializeApp(firebaseConfig);
   const analytics = getAnalytics(app);
   const db = getFirestore(app);
-  let proyectos = [];
+  
   export async function getBlogPosts() {
+    let proyectos = [];
     const querySnapshot = await getDocs(collection(db, 'proyectos'));
       querySnapshot.forEach((doc) => {
-      proyectos.push(doc.data());
+      proyectos.push({...doc.data(), id: doc.id});
       console.log(doc.id, " => ", doc.data());
     });
     //pasar el createdAt a un objeto Date js
@@ -40,4 +41,19 @@ const firebaseConfig = {
       }
     });
     return proyectos;
+  }
+
+  export async function getProjectById(id) {
+    const querySnapshot = await getDocs(collection(db, 'proyectos'));
+    let project = null;
+    querySnapshot.forEach((doc) => {
+      if (doc.id === id || doc.data().title === id) {
+        project = {
+          ...doc.data(),
+          id: doc.id,
+          created_at: new Date((doc.data().created_at?.seconds ?? 0) * 1000).toLocaleDateString()
+        };
+      }
+    });
+    return project;
   }
