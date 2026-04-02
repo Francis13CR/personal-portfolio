@@ -1,3 +1,12 @@
+:root {
+  --accent: #FFD43B;
+  --accent-dim: rgba(255, 212, 59, 0.15);
+  --bg-card: rgba(255,255,255,0.04);
+  --radius: 12px;
+  --shadow: 0 4px 24px rgba(0,0,0,0.45);
+  --transition: all 0.3s ease;
+}
+
 html, body {
   height: 100%;
   margin: 0;
@@ -15,22 +24,133 @@ header, footer, .border-bottom {
   padding: 0;
 }
 
-
-
 .particule {
   position: absolute;
 }
-
 
 .border-none {
   border: none!important;
 }
 
+/* Badge para tecnologías */
+.badge-tech {
+  background: var(--accent-dim);
+  color: var(--accent);
+  border: 1px solid var(--accent-dim);
+  border-radius: 20px;
+  padding: 3px 10px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  display: inline-block;
+  margin: 2px;
+}
+
+/* Título de sección con acento */
+.section-title {
+  font-size: 1.6rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  padding-left: 12px;
+  border-left: 4px solid var(--accent);
+}
+
+/* Card mejorada */
+.card {
+  border: 1px solid var(--accent-dim) !important;
+  border-radius: var(--radius) !important;
+  box-shadow: var(--shadow);
+  transition: var(--transition);
+  background: var(--bg-card) !important;
+}
 .card:hover {
-  transform: scale(1.05);
-  transition: transform 0.3s;
+  transform: translateY(-4px) scale(1.02);
+  border-color: rgba(255,212,59,0.4) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.6);
   cursor: pointer;
 }
+
+/* Botón acento */
+.btn-accent {
+  background-color: var(--accent);
+  color: #1a1a1a;
+  font-weight: 600;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 24px;
+  transition: var(--transition);
+  text-decoration: none;
+  display: inline-block;
+}
+.btn-accent:hover {
+  background-color: #FFC107;
+  color: #000;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 16px rgba(255,212,59,0.35);
+}
+
+/* Link de icono social */
+.social-icon-link {
+  color: rgba(255,255,255,0.6);
+  font-size: 1.3rem;
+  margin: 0 8px;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.social-icon-link:hover {
+  color: var(--accent);
+  transform: scale(1.2);
+  display: inline-block;
+}
+
+/* Typewriter cursor */
+.typewriter-cursor {
+  display: inline-block;
+  width: 2px;
+  height: 1em;
+  background: var(--accent);
+  margin-left: 4px;
+  vertical-align: middle;
+  animation: blink 0.7s infinite;
+}
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+/* Hero gradient */
+.hero-section {
+  background: radial-gradient(ellipse at 60% 0%, rgba(255,212,59,0.08) 0%, transparent 60%),
+              radial-gradient(ellipse at 0% 100%, rgba(255,212,59,0.05) 0%, transparent 50%);
+  padding-top: 80px;
+}
+
+/* Timeline de experiencia */
+.timeline-item {
+  position: relative;
+  padding-left: 24px;
+  margin-bottom: 2rem;
+}
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 6px;
+  width: 10px;
+  height: 10px;
+  background: var(--accent);
+  border-radius: 50%;
+  box-shadow: 0 0 0 3px var(--accent-dim);
+}
+.timeline-item::after {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 18px;
+  width: 2px;
+  height: calc(100% - 10px);
+  background: var(--accent-dim);
+}
+.timeline-item:last-child::after { display: none; }
 
 .btn-primary:hover {
   background-color: #0056b3;
@@ -42,7 +162,7 @@ header, footer, .border-bottom {
 
 @media (max-width: 768px) {
   .profile-img {
-    max-width: 150px!important; /* Ajusta este valor según sea necesario */
+    max-width: 150px!important;
   }
   .navbar-nav {
     text-align: center;
@@ -50,6 +170,16 @@ header, footer, .border-bottom {
   .navbar-toggler {
     margin-left: auto;
   }
- 
-  
+  .hero-section {
+    padding-top: 70px;
+    text-align: center;
+  }
+  .hero-section .btn-accent,
+  .hero-section .btn-outline-light {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-size: 1.3rem;
+  }
 }

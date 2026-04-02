@@ -1,0 +1,8 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find C:/proyectos/portafolioN/personal-portfolio/src -type f \\\\\\(-name *.vue -o -name *.jsx -o -name *.js -o -name *.tsx -o -name *.ts \\\\\\))",
+      "Bash(xargs grep:*)"
+    ]
+  }
+}

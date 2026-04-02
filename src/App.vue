@@ -12,7 +12,7 @@
               aria-controls="navbarNav"
               aria-expanded="false"
               aria-label="Toggle navigation"
-             
+
             >
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -24,12 +24,9 @@
                 <li class="nav-item">
                   <router-link to="/about" class="nav-link" @click="closeNavbar">Sobre mí</router-link>
                 </li>
-                <!-- <li class="nav-item">
-                  <router-link to="/projects" class="nav-link" @click="closeNavbar">Proyectos</router-link>
-                </li>
                 <li class="nav-item">
-                  <router-link to="/blog" class="nav-link" @click="closeNavbar">Blog</router-link>
-                </li> -->
+                  <a href="/#proyectos" class="nav-link" @click="closeNavbar">Proyectos</a>
+                </li>
                 <li class="nav-item">
                   <a @click="showContact(); closeNavbar()" class="nav-link pointer">Contacto</a>
                 </li>
@@ -38,37 +35,39 @@
           </div>
         </nav>
       </header>
-  
+
       <main>
         <router-view></router-view>
       </main>
-  
-      <footer class="container" data-aos="fade-up">
-        <!-- Footer content here -->
+
+      <footer class="py-4 mt-5 border-top" style="border-color: var(--accent-dim) !important;">
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
+          <span class="text-muted" style="font-size:0.9rem;">© 2025 Francis Meléndez — Esparza, Costa Rica</span>
+          <div>
+            <a href="https://github.com/Francis13CR" target="_blank" class="social-icon-link"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/francismch/" target="_blank" class="social-icon-link"><i class="fab fa-linkedin"></i></a>
+            <a href="mailto:francismelendez134@gmail.com" class="social-icon-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
       </footer>
     </div>
   </template>
-  
+
   <script>
   import Swal from 'sweetalert2';
   import "@fortawesome/fontawesome-free/css/all.min.css";
-  // Importa Bootstrap JS
   export default {
     name: 'App',
     components: {
-      // Your components here
     },
     data() {
       return {
-        // Your data properties here
       };
     },
     mounted() {
-      // Agregar un evento global para cerrar el navbar al hacer clic fuera
       document.addEventListener('click', this.handleOutsideClick);
     },
     beforeUnmount() {
-      // Eliminar el evento global al desmontar el componente
       document.removeEventListener('click', this.handleOutsideClick);
     },
     methods: {
@@ -79,7 +78,6 @@
         }
       },
       showContact() {
-        // SweetAlert
         Swal.fire({
           title: "¡Contáctame! 📩",
           html: `
@@ -90,22 +88,19 @@
           showCloseButton: true,
           showConfirmButton: false,
           didOpen: () => {
-            console.log("SweetAlert abierto");
-            // Agregar evento al botón después de que el SweetAlert se haya mostrado
             const copiarCorreoBtn = document.getElementById("copiarCorreoBtn");
             if (copiarCorreoBtn) {
               copiarCorreoBtn.addEventListener("click", this.copiarCorreo);
             }
           },
           didDestroy: () => {
-            // Limpiar el evento al cerrar el SweetAlert
             const copiarCorreoBtn = document.getElementById("copiarCorreoBtn");
             if (copiarCorreoBtn) {
               copiarCorreoBtn.removeEventListener("click", this.copiarCorreo);
             }
           }
         }).then(() => {
-          console.log("SweetAlert cerrado");
+          //console.log("SweetAlert cerrado");
         });
       },
       copiarCorreo() {
@@ -123,7 +118,6 @@
       closeNavbar() {
         const navbar = this.$refs.navbarNav;
         if (navbar) {
-          // le quitamos la clase show al navbar
           navbar.classList.remove("show");
         }
       }
@@ -131,10 +125,31 @@
   }
 
   </script>
-  
+
   <style>
   .pointer {
     cursor: pointer;
   }
+
+  .nav-link {
+    position: relative;
+    transition: color 0.3s;
+  }
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--accent);
+    transition: width 0.3s;
+  }
+  .nav-link:hover::after,
+  .router-link-active::after {
+    width: 100%;
+  }
+  .router-link-active {
+    color: var(--accent) !important;
+  }
   </style>
-  

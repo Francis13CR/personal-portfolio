@@ -30,7 +30,7 @@ const firebaseConfig = {
     const querySnapshot = await getDocs(collection(db, 'proyectos'));
       querySnapshot.forEach((doc) => {
       proyectos.push({...doc.data(), id: doc.id});
-      console.log(doc.id, " => ", doc.data());
+      //console.log(doc.id, " => ", doc.data());
     });
     //pasar el createdAt a un objeto Date js
     proyectos = proyectos.map((proyecto) => {
