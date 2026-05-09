@@ -34,7 +34,7 @@ const proyectos = [
     id: 'demo-dentista',
     title: 'Demo Clínica Dental',
     description: 'Sitio web showcase profesional para clínicas dentales, desarrollado como demostración de servicios de desarrollo web para el sector salud. Presenta un diseño moderno, limpio y orientado a la conversión, con secciones optimizadas para mostrar servicios odontológicos, equipo médico, testimonios de pacientes y formularios de contacto/citas. Implementa las mejores prácticas de UX/UI para el sector médico: jerarquía visual clara, tipografía legible, paleta de colores que transmite confianza y profesionalismo, imágenes de alta calidad y CTAs estratégicamente ubicados. Totalmente responsive con rendimiento optimizado, accesibilidad WCAG 2.1 y SEO técnico. Sirve como plantilla base personalizable para consultorios dentales que buscan presencia digital profesional sin la complejidad de un CMS.',
-    created_at: new Date('2024-01-15'),
+    created_at: new Date('2026-01-15'),
     status: 1,
     images: [
       '/images/demo-dentista-1.png',
@@ -44,13 +44,46 @@ const proyectos = [
     technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Bootstrap 5', 'SEO'],
     link: 'https://demo-dentista.francismch.dev/',
     github: null
+  },
+  {
+    id: 'centro-educativo-sol-naciente',
+    title: 'Centro Educativo Bilingüe Sol Naciente',
+    description: 'Sitio web institucional para centro educativo bilingüe de excelencia ubicado en Esparza, Puntarenas. El proyecto presenta una plataforma digital completa que refleja los valores educativos de la institución: bilingüismo auténtico (español-inglés), educación con valores, tecnología con propósito y atención personalizada. El sitio incluye presentación de niveles académicos (materno, preescolar, primaria y secundaria), equipo docente con perfiles profesionales, proceso de matrícula paso a paso, galería de instalaciones, eventos académicos y formularios de contacto optimizados. Diseño orientado a conversión de leads (padres de familia) con testimonios de estudiantes, carta de la directora y tours virtuales. Implementa diseño responsive, optimización SEO para búsquedas locales de educación bilingüe en Costa Rica, y CTA estratégicos para solicitar visitas guiadas. Arquitectura de información clara que facilita la navegación para distintos perfiles de usuario: padres investigando opciones educativas, estudiantes actuales y personal docente.',
+    created_at: new Date('2026-03-20'),
+    status: 1,
+    images: [
+      '/images/demo-educativo-1.png',
+      '/images/demo-educativo-2.png',
+      '/images/demo-educativo-3.png'
+    ],
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Tailwind CSS', 'SEO Local', 'Forms Validation'],
+    link: 'https://demo-centro-educativo.francismch.dev',
+    github: null
+  },
+  {
+    id: 'vivero-la-raiz',
+    title: 'Vivero y Paisajismo La Raíz',
+    description: 'Plataforma web completa para vivero y empresa de diseño paisajístico sostenible con 15 años de experiencia en Costa Rica. El sitio integra tres líneas de negocio: venta de plantas ornamentales (catálogo de más de 200 especies con filtros por tipo, luz y tamaño), servicios de diseño y construcción de jardines, y mantenimiento profesional. Incluye portafolio visual de proyectos ejecutados con comparadores antes/después interactivos, catálogo de plantas con fichas técnicas (nombre científico, requerimientos de luz, tamaño), proceso de trabajo paso a paso (desde consulta inicial hasta mantenimiento), testimonios de clientes con fotos reales y formularios de cotización segmentados por tipo de servicio. Diseño enfocado en transmitir expertise en paisajismo tropical sostenible, uso de especies nativas y enfoque ecológico. Funcionalidades destacadas: galería de proyectos filtrable por tipo de jardín, integración con WhatsApp para consultas rápidas de disponibilidad de plantas, calculadora de presupuesto estimado y sistema de agendamiento de visitas al vivero. Optimizado para SEO local (búsquedas de viveros y paisajismo en San José) con schema markup para negocios locales.',
+    created_at: new Date('2026-04-10'),
+    status: 1,
+    images: [
+      '/images/demo-vivero-1.png',
+      '/images/demo-vivero-2.png',
+      '/images/demo-vivero-3.png'
+    ],
+    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Bootstrap 5', 'SEO Local', 'WhatsApp Integration', 'Image Optimization'],
+    link: 'https://demo-vivero.francismch.dev/',
+    github: null
   }
 ];
 
 // Función para obtener todos los proyectos (reemplazo de getBlogPosts)
 export async function getBlogPosts() {
+  // Ordenar proyectos por fecha del más nuevo al más viejo
+  const sortedProyectos = [...proyectos].sort((a, b) => b.created_at - a.created_at);
+  
   // Simulamos el formato que venía de Firebase
-  return proyectos.map(proyecto => ({
+  return sortedProyectos.map(proyecto => ({
     ...proyecto,
     created_at: proyecto.created_at.toLocaleDateString(),
     subtitle: proyecto.subtitle || (proyecto.description?.substring(0, 170) ?? '') + '...'

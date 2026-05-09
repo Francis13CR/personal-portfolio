@@ -17,6 +17,30 @@
                 <i class="fa-solid fa-arrow-left"></i> Volver
               </button>
               <h1 class="mb-3">{{ proyecto.title }}</h1>
+              
+              <!-- Botón destacado para ver el proyecto -->
+              <div v-if="proyecto.link" class="mb-4">
+                <a 
+                  :href="proyecto.link" 
+                  target="_blank" 
+                  class="btn btn-accent btn-lg"
+                  style="font-size: 1.1rem; padding: 12px 32px; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px;"
+                >
+                  <i class="fa-solid fa-external-link-alt"></i>
+                  Ver Proyecto en Vivo
+                </a>
+                <a 
+                  v-if="proyecto.github" 
+                  :href="proyecto.github" 
+                  target="_blank" 
+                  class="btn btn-outline-light btn-lg ms-2"
+                  style="font-size: 1.1rem; padding: 12px 32px; border-radius: 8px; font-weight: 600;"
+                >
+                  <i class="fa-brands fa-github"></i>
+                  GitHub
+                </a>
+              </div>
+              
               <p class="lead text-secondary">{{ proyecto.description }}</p>
               <div class="mt-4">
                 <span class="badge bg-primary me-2">
@@ -84,23 +108,6 @@
                   {{ tech }}
                 </span>
               </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Enlaces del proyecto (si están disponibles) -->
-      <div v-if="proyecto.link || proyecto.github" class="mb-5" data-aos="fade-up">
-        <div class="container mb-5">
-          <h2 class="text-center mb-5">Enlaces</h2>
-          <div class="row">
-            <div class="col-md-8 offset-md-2 text-center">
-              <a v-if="proyecto.link" :href="proyecto.link" target="_blank" class="btn btn-primary btn-lg me-3">
-                <i class="fa-solid fa-external-link-alt"></i> Ver Proyecto
-              </a>
-              <a v-if="proyecto.github" :href="proyecto.github" target="_blank" class="btn btn-outline-light btn-lg">
-                <i class="fa-brands fa-github"></i> Ver en GitHub
-              </a>
             </div>
           </div>
         </div>
