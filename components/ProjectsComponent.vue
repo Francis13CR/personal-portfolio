@@ -41,7 +41,6 @@
                 </a>
               </div>
               
-              <p class="lead text-secondary">{{ proyecto.description }}</p>
               <div class="mt-4">
                 <span class="badge bg-primary me-2">
                   <i class="fa-solid fa-calendar"></i> {{ proyecto.created_at }}
@@ -81,7 +80,7 @@
       <div class="border-bottom mb-5" data-aos="fade-up">
         <div class="container mb-5">
           <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-11 offset-md-0 col-lg-10 offset-lg-1">
               <div class="card bg-dark-subtle p-4">
                 <h3 class="mb-4">Detalles del Proyecto</h3>
                 <div class="project-description">
@@ -98,7 +97,7 @@
         <div class="container mb-5">
           <h2 class="text-center mb-5">Tecnologías Utilizadas</h2>
           <div class="row">
-            <div class="col-md-8 offset-md-2">
+            <div class="col-md-11 offset-md-0 col-lg-10 offset-lg-1">
               <div class="d-flex flex-wrap justify-content-center">
                 <span 
                   v-for="(tech, index) in proyecto.technologies" 

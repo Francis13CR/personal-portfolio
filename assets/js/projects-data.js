@@ -41,13 +41,13 @@ const proyectos = [
       '/images/demo-dentitas-2.png',
       '/images/demo-dentista-3.png'
     ],
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Bootstrap 5', 'SEO'],
+    technologies: ['Vue 3', 'Vite 7', 'Tailwind CSS 4', 'JavaScript', 'Frontend Only', 'Responsive Design', 'SEO'],
     link: 'https://demo-dentista.francismch.dev/',
     github: null
   },
   {
     id: 'centro-educativo-sol-naciente',
-    title: 'Centro Educativo Bilingüe Sol Naciente',
+    title: 'Demo Centro Educativo Bilingüe',
     description: 'Sitio web institucional para centro educativo bilingüe de excelencia ubicado en Esparza, Puntarenas. El proyecto presenta una plataforma digital completa que refleja los valores educativos de la institución: bilingüismo auténtico (español-inglés), educación con valores, tecnología con propósito y atención personalizada. El sitio incluye presentación de niveles académicos (materno, preescolar, primaria y secundaria), equipo docente con perfiles profesionales, proceso de matrícula paso a paso, galería de instalaciones, eventos académicos y formularios de contacto optimizados. Diseño orientado a conversión de leads (padres de familia) con testimonios de estudiantes, carta de la directora y tours virtuales. Implementa diseño responsive, optimización SEO para búsquedas locales de educación bilingüe en Costa Rica, y CTA estratégicos para solicitar visitas guiadas. Arquitectura de información clara que facilita la navegación para distintos perfiles de usuario: padres investigando opciones educativas, estudiantes actuales y personal docente.',
     created_at: new Date('2026-03-20'),
     status: 1,
@@ -56,13 +56,13 @@ const proyectos = [
       '/images/demo-educativo-2.png',
       '/images/demo-educativo-3.png'
     ],
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Tailwind CSS', 'SEO Local', 'Forms Validation'],
+    technologies: ['Vue 3', 'Vite 7', 'Tailwind CSS 4', 'JavaScript', 'Frontend Only', 'Responsive Design', 'SEO Local', 'Forms'],
     link: 'https://demo-centro-educativo.francismch.dev',
     github: null
   },
   {
     id: 'vivero-la-raiz',
-    title: 'Vivero y Paisajismo La Raíz',
+    title: 'Demo Vivero y Paisajismo',
     description: 'Plataforma web completa para vivero y empresa de diseño paisajístico sostenible con 15 años de experiencia en Costa Rica. El sitio integra tres líneas de negocio: venta de plantas ornamentales (catálogo de más de 200 especies con filtros por tipo, luz y tamaño), servicios de diseño y construcción de jardines, y mantenimiento profesional. Incluye portafolio visual de proyectos ejecutados con comparadores antes/después interactivos, catálogo de plantas con fichas técnicas (nombre científico, requerimientos de luz, tamaño), proceso de trabajo paso a paso (desde consulta inicial hasta mantenimiento), testimonios de clientes con fotos reales y formularios de cotización segmentados por tipo de servicio. Diseño enfocado en transmitir expertise en paisajismo tropical sostenible, uso de especies nativas y enfoque ecológico. Funcionalidades destacadas: galería de proyectos filtrable por tipo de jardín, integración con WhatsApp para consultas rápidas de disponibilidad de plantas, calculadora de presupuesto estimado y sistema de agendamiento de visitas al vivero. Optimizado para SEO local (búsquedas de viveros y paisajismo en San José) con schema markup para negocios locales.',
     created_at: new Date('2026-04-10'),
     status: 1,
@@ -71,7 +71,7 @@ const proyectos = [
       '/images/demo-vivero-2.png',
       '/images/demo-vivero-3.png'
     ],
-    technologies: ['HTML5', 'CSS3', 'JavaScript', 'Responsive Design', 'Bootstrap 5', 'SEO Local', 'WhatsApp Integration', 'Image Optimization'],
+    technologies: ['Vue 3', 'Vite 7', 'Tailwind CSS 4', 'JavaScript', 'Frontend Only', 'Responsive Design', 'SEO Local', 'WhatsApp Integration'],
     link: 'https://demo-vivero.francismch.dev/',
     github: null
   }
