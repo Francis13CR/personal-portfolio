@@ -3,6 +3,23 @@
 
 const proyectos = [
   {
+    id: 'taekwondo-fenix-demo',
+    title: 'Demo Academia Taekwondo Fénix',
+    description: 'Sitio web demo de alto impacto para la Academia Taekwondo Fénix de Costa Rica, diseñado como propuesta especulativa para mostrar el potencial de una presencia digital profesional para la academia. El diseño gira en torno a una identidad visual dramática: paleta dorado-negro con tipografía Bebas Neue, pensada para transmitir disciplina, fuego y excelencia deportiva.\n\nEl sitio integra todas las necesidades clave de una academia de artes marciales: sección hero con llamado a clase de prueba gratuita, mapa interactivo de sucursales (Leaflet.js con pines personalizados), perfiles de instructores, galería de atletas en cuadrícula rota, línea de tiempo de logros, contador de estadísticas animado, programas por categoría de edad, testimonios de estudiantes, sección de preguntas frecuentes y formulario de inscripción a clase de prueba con validación completa.\n\nImplementa animaciones de scroll reveal, efecto parallax en el hero, contador de estadísticas con easing al entrar en viewport, y pantalla de carga con el logo de la academia. Totalmente responsive (375px a 1440px+), con accesibilidad respetando prefers-reduced-motion. Todo el contenido y datos provienen de archivos TypeScript locales, sin backend.',
+    created_at: new Date('2026-05-09'),
+    status: 1,
+    images: [
+      '/images/fenix-demo-1.png',
+      '/images/fenix-demo-2.png',
+      '/images/fenix-demo-3.png',
+      '/images/fenix-demo-4.png',
+      '/images/fenix-demo-5.png'
+    ],
+    technologies: ['Vue 3', 'TypeScript', 'Vite 7', 'Tailwind CSS 4', 'Leaflet.js', 'VueUse', 'Frontend Only', 'Responsive Design', 'Animaciones CSS'],
+    link: "https://demo-fenix.francismch.dev",
+    github: null
+  },
+  {
     id: 'buscador-cabys',
     title: 'Buscador Cabys',
     description: 'Herramienta web especializada para la búsqueda de códigos CABYS (Catálogo de Bienes y Servicios) en Costa Rica. Desarrollada para facilitar el cumplimiento tributario de empresas y profesionales que requieren clasificar productos y servicios para facturación electrónica. La aplicación permite búsquedas rápidas por palabras clave, filtrado inteligente de resultados y funcionalidades de productividad como copia automática al portapapeles y compartir códigos. Optimizada para uso diario con interfaz responsive y rendimiento ágil, soporta miles de búsquedas mensuales de contadores, desarrolladores y empresarios costarricenses.',
