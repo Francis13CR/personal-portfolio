@@ -3,6 +3,20 @@
 
 const proyectos = [
   {
+    id: 'agendelo-app',
+    title: 'Agendelo.app — Plataforma de Citas Online',
+    description: 'Plataforma SaaS de agendamiento de citas online para negocios y profesionales independientes en Costa Rica y Latinoamérica. Permite a cualquier negocio —clínicas, salones de belleza, consultorios, estudios, entrenadores— crear su página de reservas personalizada en minutos, sin necesidad de conocimientos técnicos.\n\nLos clientes pueden agendar citas 24/7 desde cualquier dispositivo, recibir confirmaciones automáticas por correo y recordatorios antes de su cita. Los negocios gestionan su agenda, servicios, colaboradores y disponibilidad desde un panel de administración intuitivo.\n\nCaracterísticas principales: página de reservas pública personalizada por negocio, gestión de múltiples colaboradores y horarios individuales, catálogo de servicios con duración y precio, recordatorios automáticos por correo, panel de administración con vista de calendario, historial de citas y clientes, y sistema de autenticación seguro. Construido con Vue 3, Node.js, Firebase y desplegado en producción con usuarios activos.',
+    created_at: new Date('2026-02-01'),
+    status: 1,
+    images: [
+      '/images/agendelo.app.png',
+      '/images/agendelo.png'
+    ],
+    technologies: ['Vue 3', 'Node.js', 'Firebase', 'Firestore', 'Tailwind CSS', 'JavaScript', 'SaaS', 'Auth', 'Email Automation', 'Responsive Design'],
+    link: 'https://agendelo.app/',
+    github: null
+  },
+  {
     id: 'orto-tandem-demo',
     title: 'Demo Clínica Ortodoncia Tándem',
     description: 'Sitio web demo de alto impacto diseñado como propuesta especulativa para una clínica de ortodoncia en Esparza, Puntarenas. El proyecto busca mostrar el potencial de una presencia digital profesional para el sector odontológico especializado, con foco en ortodoncia y estética dental.\n\nEl diseño transmite confianza, modernidad y cercanía: paleta de colores limpia con acentos en azul y blanco, tipografía clara y jerarquía visual orientada a la conversión de pacientes. El sitio incluye presentación de tratamientos (brackets metálicos, cerámicos, alineadores), galería de casos clínicos antes/después, perfiles del equipo profesional, sección de preguntas frecuentes, testimonios de pacientes y formulario de cita previa con validación completa.\n\nImplementa animaciones de scroll reveal, hero con llamado a consulta gratuita, integración con WhatsApp para consultas rápidas y diseño totalmente responsive (375px a 1440px+). Todo el contenido proviene de archivos TypeScript locales, sin backend. SEO técnico y accesibilidad incluidos.',
