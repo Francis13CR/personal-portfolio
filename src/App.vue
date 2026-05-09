@@ -42,7 +42,7 @@
 
       <footer class="py-4 mt-5 border-top" style="border-color: var(--accent-dim) !important;">
         <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-3">
-          <span class="text-muted" style="font-size:0.9rem;">© 2025 Francis Meléndez — Esparza, Costa Rica</span>
+          <span class="text-muted" style="font-size:0.9rem;">© 2026 Francis Meléndez — Esparza, Costa Rica</span>
           <div>
             <a href="https://github.com/Francis13CR" target="_blank" class="social-icon-link"><i class="fab fa-github"></i></a>
             <a href="https://www.linkedin.com/in/francismch/" target="_blank" class="social-icon-link"><i class="fab fa-linkedin"></i></a>

@@ -263,7 +263,7 @@
 </template>
 
 <script>
-import { getBlogPosts } from "../assets/js/firebase.js";
+import { getBlogPosts } from "../assets/js/projects-data.js";
 import 'aos/dist/aos.css';
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import Swal from 'sweetalert2';
