@@ -23,11 +23,11 @@
                 <a 
                   :href="proyecto.link" 
                   target="_blank" 
-                  class="btn btn-accent btn-lg"
-                  style="font-size: 1.1rem; padding: 12px 32px; border-radius: 8px; font-weight: 600; display: inline-flex; align-items: center; gap: 10px;"
+                  class="btn btn-warning btn-lg shadow"
+                  style="font-size: 1.15rem; padding: 14px 36px; border-radius: 10px; font-weight: 700; display: inline-flex; align-items: center; gap: 10px; color: #111; letter-spacing: 0.3px; box-shadow: 0 4px 18px rgba(255,193,7,0.45) !important;"
                 >
-                  <i class="fa-solid fa-external-link-alt"></i>
-                  Ver Proyecto en Vivo
+                  <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                  Visitar Sitio
                 </a>
                 <a 
                   v-if="proyecto.github" 

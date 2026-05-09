@@ -3,6 +3,19 @@
 
 const proyectos = [
   {
+    id: 'orto-tandem-demo',
+    title: 'Demo Clínica Ortodoncia Tándem',
+    description: 'Sitio web demo de alto impacto diseñado como propuesta especulativa para una clínica de ortodoncia en Esparza, Puntarenas. El proyecto busca mostrar el potencial de una presencia digital profesional para el sector odontológico especializado, con foco en ortodoncia y estética dental.\n\nEl diseño transmite confianza, modernidad y cercanía: paleta de colores limpia con acentos en azul y blanco, tipografía clara y jerarquía visual orientada a la conversión de pacientes. El sitio incluye presentación de tratamientos (brackets metálicos, cerámicos, alineadores), galería de casos clínicos antes/después, perfiles del equipo profesional, sección de preguntas frecuentes, testimonios de pacientes y formulario de cita previa con validación completa.\n\nImplementa animaciones de scroll reveal, hero con llamado a consulta gratuita, integración con WhatsApp para consultas rápidas y diseño totalmente responsive (375px a 1440px+). Todo el contenido proviene de archivos TypeScript locales, sin backend. SEO técnico y accesibilidad incluidos.',
+    created_at: new Date('2026-05-09'),
+    status: 1,
+    images: [
+      '/images/demo-ortodem.png'
+    ],
+    technologies: ['Vue 3', 'TypeScript', 'Vite 7', 'Tailwind CSS 4', 'Frontend Only', 'Responsive Design', 'WhatsApp Integration', 'Animaciones CSS', 'SEO'],
+    link: 'https://ortotandem-demo.francismch.dev',
+    github: null
+  },
+  {
     id: 'taekwondo-fenix-demo',
     title: 'Demo Academia Taekwondo Fénix',
     description: 'Sitio web demo de alto impacto para la Academia Taekwondo Fénix de Costa Rica, diseñado como propuesta especulativa para mostrar el potencial de una presencia digital profesional para la academia. El diseño gira en torno a una identidad visual dramática: paleta dorado-negro con tipografía Bebas Neue, pensada para transmitir disciplina, fuego y excelencia deportiva.\n\nEl sitio integra todas las necesidades clave de una academia de artes marciales: sección hero con llamado a clase de prueba gratuita, mapa interactivo de sucursales (Leaflet.js con pines personalizados), perfiles de instructores, galería de atletas en cuadrícula rota, línea de tiempo de logros, contador de estadísticas animado, programas por categoría de edad, testimonios de estudiantes, sección de preguntas frecuentes y formulario de inscripción a clase de prueba con validación completa.\n\nImplementa animaciones de scroll reveal, efecto parallax en el hero, contador de estadísticas con easing al entrar en viewport, y pantalla de carga con el logo de la academia. Totalmente responsive (375px a 1440px+), con accesibilidad respetando prefers-reduced-motion. Todo el contenido y datos provienen de archivos TypeScript locales, sin backend.',
