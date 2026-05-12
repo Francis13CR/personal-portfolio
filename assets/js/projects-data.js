@@ -105,6 +105,19 @@ const proyectos = [
     github: null
   },
   {
+    id: 'pacific-sun-travel',
+    title: 'Pacific Sun Travel — Tours en Costa Rica',
+    description: 'Sitio web profesional para agencia de tours en Costa Rica, bilingüe (español/inglés) con catálogo de 10 paquetes turísticos. Diseñado para mostrar la belleza natural de Costa Rica y convertir visitantes en clientes mediante una experiencia inmersiva.\n\nImplementa diseño de una sola página (SPA) con secciones apiladas: Hero con animación de olas SVG y elementos decorativos (guacamaya, sol), galería de tours con búsqueda y filtros (texto, categoría, duración, ordenamiento), sección "Acerca de" con estadísticas animadas, cuadrícula de testimonios, FAQ con acordeón y formulario de contacto integrado con Web3Forms.\n\nCaracterísticas destacadas: cambio de idioma Español ↔ Inglés con vue-i18n y persistencia en localStorage, búsqueda con normalización de acentos (NFD), contadores animados con useCountUp, animaciones de scroll reveal, diseño completamente responsive con Tailwind CSS 4, cotización desde el modal de tour que auto-prefilla el formulario de contacto, botón flotante de WhatsApp con mensaje localizado, y elementos decorativos animados (guacamaya, sol, olas, palmera, brújula).\n\nConstruido con Vue 3 Composition API, TypeScript estricto, Vite 7, Tailwind CSS 4 con tokens de color personalizados (amarillo, naranja, azul, rojo, morado) y Lucide icons.',
+    created_at: new Date('2026-05-12'),
+    status: 1,
+    images: [
+      '/images/agencia-tour.png'
+    ],
+    technologies: ['Vue 3', 'TypeScript', 'Vite 7', 'Tailwind CSS 4', 'vue-i18n', 'Web3Forms', 'Lucide Icons', 'SEO', 'Bilingual (ES/EN)', 'Responsive Design', 'Animaciones CSS'],
+    link: 'https://pacific-sun-travel.francismch.dev',
+    github: null
+  },
+  {
     id: 'vivero-la-raiz',
     title: 'Demo Vivero y Paisajismo',
     description: 'Plataforma web completa para vivero y empresa de diseño paisajístico sostenible con 15 años de experiencia en Costa Rica. El sitio integra tres líneas de negocio: venta de plantas ornamentales (catálogo de más de 200 especies con filtros por tipo, luz y tamaño), servicios de diseño y construcción de jardines, y mantenimiento profesional. Incluye portafolio visual de proyectos ejecutados con comparadores antes/después interactivos, catálogo de plantas con fichas técnicas (nombre científico, requerimientos de luz, tamaño), proceso de trabajo paso a paso (desde consulta inicial hasta mantenimiento), testimonios de clientes con fotos reales y formularios de cotización segmentados por tipo de servicio. Diseño enfocado en transmitir expertise en paisajismo tropical sostenible, uso de especies nativas y enfoque ecológico. Funcionalidades destacadas: galería de proyectos filtrable por tipo de jardín, integración con WhatsApp para consultas rápidas de disponibilidad de plantas, calculadora de presupuesto estimado y sistema de agendamiento de visitas al vivero. Optimizado para SEO local (búsquedas de viveros y paisajismo en San José) con schema markup para negocios locales.',
