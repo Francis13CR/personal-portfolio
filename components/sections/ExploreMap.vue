@@ -169,7 +169,7 @@ export default {
           accent: 'movement',
           copy: 'El dojo me llevó a construir una app para los estudiantes.',
           action: 'Ver la app',
-          to: '/projects/taekwondo-fenix-app',
+          to: '/proyectos/taekwondo-fenix-app',
           graphic: graphics.taekwondo,
         },
         {

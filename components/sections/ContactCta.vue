@@ -6,7 +6,7 @@
         Si tienes un proyecto, una idea o simplemente quieres conversar, escríbeme.
       </p>
       <div class="cta-actions">
-        <router-link class="btn btn-primary" to="/contact">Contacto</router-link>
+        <router-link class="btn btn-primary" to="/contacto">Contacto</router-link>
         <a class="btn btn-ghost" href="mailto:francismelendez134@gmail.com">Escríbeme</a>
       </div>
     </div>

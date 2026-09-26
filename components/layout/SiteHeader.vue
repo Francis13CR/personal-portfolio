@@ -23,13 +23,13 @@
             <router-link to="/" exact-active-class="is-active" @click="closeMenu">Inicio</router-link>
           </li>
           <li>
-            <a href="/#proyectos" @click="closeMenu">Proyectos</a>
+            <router-link to="/proyectos" active-class="is-active" @click="closeMenu">Proyectos</router-link>
           </li>
           <li>
-            <router-link to="/about" active-class="is-active" @click="closeMenu">Sobre mí</router-link>
+            <router-link to="/sobre-mi" active-class="is-active" @click="closeMenu">Sobre mí</router-link>
           </li>
           <li>
-            <router-link to="/contact" active-class="is-active" @click="closeMenu">Contacto</router-link>
+            <router-link to="/contacto" active-class="is-active" @click="closeMenu">Contacto</router-link>
           </li>
         </ul>
       </nav>

@@ -39,7 +39,7 @@
               <li v-for="t in p.technologies.slice(0, 4)" :key="t" class="tech-chip mono">{{ t }}</li>
             </ul>
           </div>
-          <router-link class="project-link mono" :to="`/projects/${p.id}`">Ver ficha →</router-link>
+          <router-link class="project-link mono" :to="`/proyectos/${projectSlug(p)}`">Ver ficha →</router-link>
         </li>
       </ul>
     </div>
@@ -48,6 +48,7 @@
 
 <script>
 import { getBlogPosts } from '../../assets/js/projects-data.js';
+import { projectSlug } from '../../assets/js/slug.js';
 
 export default {
   name: 'WorkSection',
@@ -83,6 +84,7 @@ export default {
     this.proyectos = await getBlogPosts();
   },
   methods: {
+    projectSlug,
     pad(i) {
       return String(i + 1).padStart(2, '0');
     },

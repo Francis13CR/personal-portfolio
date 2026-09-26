@@ -187,6 +187,34 @@ pre {
   transform: none;
 }
 
+/* Páginas internas */
+.page {
+  padding-top: var(--space-6);
+}
+
+.prose p {
+  max-width: 72ch;
+  color: var(--text-muted);
+}
+
+.chip-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.chip {
+  padding: 0.25rem 0.6rem;
+  font: 400 0.68rem/1.4 var(--font-mono);
+  letter-spacing: 0.04em;
+  color: var(--text-dim);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+}
+
 /* Movimiento reducido */
 @media (prefers-reduced-motion: reduce) {
   *,
