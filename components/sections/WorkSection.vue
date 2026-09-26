@@ -2,29 +2,52 @@
   <section id="trabajo" class="section work" aria-labelledby="trabajo-title" v-reveal>
     <div class="container">
       <p class="section-label">03 / Trabajo</p>
-      <h2 id="trabajo-title">Facture.cr, un caso de estudio</h2>
+      <h2 id="trabajo-title">Mi trabajo actual: Facture.cr</h2>
+      <p class="work-tag mono">TRABAJO ACTUAL · ENE 2024 – PRESENTE</p>
       <p class="lede">
-        La mejor forma de explicar cómo trabajo no es una lista de tecnologías, sino el sistema que
-        uso para que las cosas salgan.
+        Soy Full Stack Developer. Construyo y mantengo los proyectos de Facture.cr de punta a punta:
+        frontend, backend, base de datos y despliegue; además coordino al equipo y garantizo la
+        calidad antes de producción.
       </p>
 
-      <ol class="flow" role="list" aria-label="Flujo de trabajo">
-        <li
-          v-for="(step, i) in flow"
-          :key="step"
-          class="flow-step"
-          :class="{ 'is-final': i === flow.length - 1 }"
-        >
-          <span class="flow-name mono">{{ step }}</span>
-        </li>
-      </ol>
+      <div class="roles" role="group" aria-label="Mis roles y áreas en Facture.cr">
+        <ul class="role-list" role="list">
+          <li v-for="role in roles" :key="role.id">
+            <button
+              type="button"
+              class="role-chip"
+              :class="['is-' + role.accent, { 'is-active': role.id === activeRoleId }]"
+              :aria-pressed="role.id === activeRoleId ? 'true' : 'false'"
+              aria-controls="role-panel"
+              @click="select(role.id)"
+            >
+              <span class="role-mark" aria-hidden="true"></span>{{ role.label }}
+            </button>
+          </li>
+        </ul>
+      </div>
 
-      <dl class="case">
-        <div v-for="item in caseItems" :key="item.term" class="case-item">
-          <dt class="case-term mono">{{ item.term }}</dt>
-          <dd class="case-desc">{{ item.desc }}</dd>
-        </div>
-      </dl>
+      <div
+        id="role-panel"
+        class="role-panel"
+        :class="'is-' + activeRole.accent"
+        role="region"
+        aria-labelledby="role-panel-title"
+        aria-live="polite"
+      >
+        <p class="role-kicker mono" aria-hidden="true">ROL</p>
+        <h3 id="role-panel-title">{{ activeRole.label }}</h3>
+        <p class="role-copy">{{ activeRole.copy }}</p>
+      </div>
+
+      <p class="flow-line mono">
+        <span class="visually-hidden">Flujo de trabajo: </span>BACKLOG → REFINADO → DESARROLLO →
+        REVISIÓN → QA → DESPLEGADO
+      </p>
+      <p class="impact">
+        Resultado: QA obligatorio antes de producción, menos trabajo por WhatsApp y tickets mejor
+        redactados.
+      </p>
     </div>
 
     <div class="container projects-block">
@@ -55,36 +78,60 @@ export default {
   data() {
     return {
       proyectos: [],
-      flow: ['Backlog', 'Refinado', 'Desarrollo', 'Revisión', 'QA', 'Desplegado'],
-      caseItems: [
+      activeRoleId: 'fullstack',
+      roles: [
         {
-          term: 'Problema',
-          desc: 'Facture.cr crecía: más clientes, más facturación electrónica, más soporte y features al mismo tiempo. El trabajo se gestionaba de forma reactiva.',
+          id: 'fullstack',
+          label: 'Full Stack',
+          accent: 'software',
+          copy: 'Desarrollo de punta a punta: frontend con Vue.js 3, backend con PHP y Laravel, MySQL y despliegue con Docker.',
         },
         {
-          term: 'Rol',
-          desc: 'Full Stack Developer & Programming Supervisor: desarrollo, priorización, refinamiento, asignación, seguimiento y QA.',
+          id: 'supervisor',
+          label: 'Programming Supervisor',
+          accent: 'software',
+          copy: 'Lidero el equipo: priorizo el backlog, refino tickets, asigno, hago seguimiento y code review.',
         },
         {
-          term: 'Sistema',
-          desc: 'Scrum o Kanban según el ticket, stand-ups de 10 minutos, métricas (tiempo de resolución, bugs vs proyectos, tickets bloqueados), regla de no asignar trabajo por WhatsApp y QA obligatorio antes de producción.',
+          id: 'procesos',
+          label: 'Procesos',
+          accent: 'movement',
+          copy: 'Implementé Scrum + Kanban en ClickUp: stand-ups de 10 minutos, reglas claras y métricas (tiempo de resolución, bugs vs proyectos, tickets bloqueados).',
         },
         {
-          term: 'Qué cambié',
-          desc: 'Ordené el backlog, definí el flujo y las reglas, y empecé a medir.',
+          id: 'qa',
+          label: 'QA',
+          accent: 'movement',
+          copy: 'Nada llega a producción sin QA. Reviso antes de desplegar.',
         },
         {
-          term: 'Resultado',
-          desc: 'Menos trabajo por WhatsApp, tickets mejor redactados y QA antes de producción.',
+          id: 'automatizacion',
+          label: 'Automatización',
+          accent: 'creative',
+          copy: 'Integro WhatsApp Business API y automatizo tareas repetitivas con bots.',
+        },
+        {
+          id: 'mentoria',
+          label: 'Mentoría',
+          accent: 'creative',
+          copy: 'Acompaño a juniors y practicantes del equipo.',
         },
       ],
     };
+  },
+  computed: {
+    activeRole() {
+      return this.roles.find((role) => role.id === this.activeRoleId) || this.roles[0];
+    },
   },
   async mounted() {
     this.proyectos = await getBlogPosts();
   },
   methods: {
     projectSlug,
+    select(id) {
+      this.activeRoleId = id;
+    },
     pad(i) {
       return String(i + 1).padStart(2, '0');
     },
@@ -103,70 +150,120 @@ export default {
 </script>
 
 <style scoped>
-.flow {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1);
-  margin: var(--space-4) 0;
+.work-tag {
+  margin: 0 0 var(--space-2);
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  color: var(--accent-software);
+}
+
+/* Selector de roles: rejilla uniforme (alineada), sin flex-wrap suelto */
+.roles {
+  margin-top: var(--space-3);
+}
+
+.role-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.6rem;
+  margin: 0;
   padding: 0;
   list-style: none;
 }
 
-.flow-step {
+.role-chip {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-1);
-  padding: 0.5rem 0.75rem;
-  border: 1px solid var(--line);
-  border-radius: var(--radius-sm);
-  background: var(--bg-2);
+  justify-content: center;
+  gap: 0.5rem;
+  width: 100%;
+  min-height: 44px;
+  padding: 0.55rem 1rem;
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  font: 500 0.82rem/1.2 var(--font-sans);
+  text-align: center;
+  cursor: pointer;
 }
 
-.flow-step + .flow-step::before {
-  content: '→';
+.role-chip:hover {
+  color: var(--text);
+  border-color: var(--text-muted);
+}
+
+/* Señal no cromática del estado activo: marca rellena (WCAG 1.4.1) */
+.role-mark {
+  flex: none;
+  width: 7px;
+  height: 7px;
+  border: 1px solid currentColor;
+}
+
+.role-chip.is-active .role-mark {
+  background: currentColor;
+}
+
+.role-chip.is-active {
+  color: var(--text);
+}
+
+.role-chip.is-software.is-active {
+  color: var(--accent-software);
+  border-color: var(--accent-software);
+  background: rgba(72, 176, 247, 0.12);
+}
+
+.role-chip.is-movement.is-active {
+  color: var(--accent-movement);
+  border-color: var(--accent-movement);
+  background: rgba(127, 224, 192, 0.12);
+}
+
+.role-chip.is-creative.is-active {
+  color: var(--accent-creative);
+  border-color: var(--accent-creative);
+  background: rgba(224, 164, 88, 0.12);
+}
+
+.role-panel {
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 2px solid var(--line);
+}
+
+.role-panel.is-software { border-top-color: var(--accent-software); }
+.role-panel.is-movement { border-top-color: var(--accent-movement); }
+.role-panel.is-creative { border-top-color: var(--accent-creative); }
+
+.role-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
   color: var(--text-dim);
 }
 
-.flow-name {
-  font-size: 0.72rem;
-  letter-spacing: 0.06em;
+.role-panel h3 {
+  margin: 0 0 var(--space-1);
+}
+
+.role-copy {
+  margin: 0;
+  max-width: 72ch;
   color: var(--text-muted);
 }
 
-.flow-step.is-final {
-  border-color: var(--accent-software);
-  background: var(--accent-dim);
-}
-
-.flow-step.is-final .flow-name {
-  color: var(--accent-software);
-  font-weight: 600;
-}
-
-.case {
-  margin: 0;
-  border-top: 1px solid var(--line);
-}
-
-.case-item {
-  display: grid;
-  grid-template-columns: 160px 1fr;
-  gap: var(--space-3);
-  padding: var(--space-3) 0;
-  border-bottom: 1px solid var(--line);
-}
-
-.case-term {
-  margin: 0;
+.flow-line {
+  margin: var(--space-4) 0 0;
   font-size: 0.72rem;
-  letter-spacing: 0.16em;
-  text-transform: uppercase;
-  color: var(--accent-software);
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
 }
 
-.case-desc {
-  margin: 0;
-  max-width: 68ch;
+.impact {
+  margin: var(--space-2) 0 0;
+  max-width: 72ch;
   color: var(--text-muted);
 }
 
@@ -237,18 +334,25 @@ export default {
   white-space: nowrap;
 }
 
-@media (max-width: 720px) {
-  .case-item {
-    grid-template-columns: 1fr;
-    gap: var(--space-1);
+@media (max-width: 760px) {
+  .role-list {
+    grid-template-columns: repeat(2, 1fr);
   }
+}
 
+@media (max-width: 720px) {
   .project-row {
     grid-template-columns: 32px 1fr;
   }
 
   .project-link {
     grid-column: 2;
+  }
+}
+
+@media (max-width: 420px) {
+  .role-list {
+    grid-template-columns: 1fr;
   }
 }
 </style>

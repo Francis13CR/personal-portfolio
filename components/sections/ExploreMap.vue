@@ -14,20 +14,15 @@
             class="map-svg"
             viewBox="0 0 760 380"
             role="img"
-            aria-labelledby="map-title map-desc"
+            aria-label="Mapa de intereses de Francis: conecta software, running, calistenia, taekwondo, juegos y música."
           >
-            <title id="map-title">Mapa de intereses de Francis</title>
-            <desc id="map-desc">
-              Francis conecta software, running, calistenia, taekwondo, juegos y música.
-            </desc>
-
             <g stroke="rgba(120,160,220,0.32)" stroke-width="1">
               <line x1="380" y1="75" x2="110" y2="255" />
               <line x1="380" y1="75" x2="230" y2="305" />
               <line x1="380" y1="75" x2="365" y2="320" />
               <line x1="380" y1="75" x2="500" y2="305" />
               <line x1="380" y1="75" x2="625" y2="255" />
-              <line x1="380" y1="75" x2="700" y2="155" />
+              <line x1="380" y1="75" x2="688" y2="155" />
             </g>
 
             <circle cx="380" cy="75" r="24" fill="none" stroke="rgba(72,176,247,0.35)" />
@@ -66,25 +61,27 @@
                 <text x="625" y="285" fill="#DCE6F5">JUEGOS</text>
               </g>
               <g>
-                <circle cx="700" cy="155" r="7" fill="#E0A458" />
-                <text x="735" y="159" fill="#DCE6F5" text-anchor="end">MÚSICA</text>
+                <circle cx="688" cy="155" r="7" fill="#E0A458" />
+                <text x="720" y="159" fill="#DCE6F5" text-anchor="end">MÚSICA</text>
               </g>
             </g>
           </svg>
         </div>
 
         <div class="map-control">
-          <ul class="node-list" role="list">
-            <li v-for="node in nodes" :key="node.id">
+          <ul class="node-index" role="list">
+            <li v-for="(node, i) in nodes" :key="node.id">
               <button
                 type="button"
-                class="node-btn"
+                class="node-row"
                 :class="['is-' + node.accent, { 'is-active': node.id === activeId }]"
                 :aria-pressed="node.id === activeId ? 'true' : 'false'"
                 aria-controls="node-panel"
                 @click="select(node.id)"
               >
-                <span class="node-dot" aria-hidden="true"></span>{{ node.label }}
+                <span class="node-idx mono" aria-hidden="true">[{{ String(i + 1).padStart(2, '0') }}]</span>
+                <span class="node-name">{{ node.label }}</span>
+                <span class="node-tick" aria-hidden="true"></span>
               </button>
             </li>
           </ul>
@@ -97,10 +94,10 @@
             aria-labelledby="node-panel-title"
             aria-live="polite"
           >
-            <div class="panel-head">
-              <h3 id="node-panel-title" class="panel-title">{{ active.label }}</h3>
-              <span class="panel-accent mono" aria-hidden="true">{{ active.accent }}</span>
-            </div>
+            <p class="panel-kicker mono" aria-hidden="true">
+              NODO / {{ String(activeIndex).padStart(2, '0') }}
+            </p>
+            <h3 id="node-panel-title" class="panel-title">{{ active.label }}</h3>
             <div class="panel-body">
               <span class="panel-graphic" aria-hidden="true" v-html="active.graphic"></span>
               <p class="panel-copy">{{ active.copy }}</p>
@@ -193,6 +190,9 @@ export default {
     active() {
       return this.nodes.find((node) => node.id === this.activeId) || this.nodes[0];
     },
+    activeIndex() {
+      return this.nodes.findIndex((node) => node.id === this.activeId) + 1;
+    },
   },
   methods: {
     select(id) {
@@ -226,91 +226,95 @@ export default {
   height: auto;
 }
 
-.node-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: var(--space-1);
-  margin: 0 0 var(--space-2);
+/* Índice de nodos: filas alineadas por rejilla, sin píldoras */
+.node-index {
+  margin: 0;
   padding: 0;
   list-style: none;
+  border-top: 1px solid var(--line);
 }
 
-.node-btn {
-  display: inline-flex;
+.node-row {
+  display: grid;
+  grid-template-columns: 3.4rem 1fr 10px;
   align-items: center;
-  gap: 0.5rem;
-  min-height: 44px;
-  padding: 0.5rem 0.9rem;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.7rem 0.5rem;
   background: transparent;
   color: var(--text-muted);
-  border: 1px solid var(--border);
-  border-radius: 999px;
-  font: 500 0.82rem/1 var(--font-sans);
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-left: 2px solid transparent;
+  text-align: left;
+  font: 400 0.95rem/1.3 var(--font-sans);
   cursor: pointer;
 }
 
-.node-btn:hover {
+.node-row:hover {
   color: var(--text);
-  border-color: var(--accent-software);
+  background: rgba(255, 255, 255, 0.02);
 }
 
-.node-btn.is-active {
+.node-row.is-active {
   color: var(--text);
-  border-color: currentColor;
-  background: rgba(255, 255, 255, 0.05);
   font-weight: 600;
+  background: rgba(255, 255, 255, 0.03);
 }
 
-.node-dot {
-  width: 9px;
-  height: 9px;
+.node-row.is-software.is-active { border-left-color: var(--accent-software); }
+.node-row.is-movement.is-active { border-left-color: var(--accent-movement); }
+.node-row.is-creative.is-active { border-left-color: var(--accent-creative); }
+
+.node-idx {
+  font-size: 0.7rem;
+  letter-spacing: 0.06em;
+  color: var(--text-dim);
+}
+
+.node-row.is-active .node-idx {
+  color: var(--text);
+}
+
+.node-tick {
+  justify-self: end;
+  width: 8px;
+  height: 8px;
   border-radius: 50%;
-  flex: none;
+  background: var(--text-dim);
 }
 
-.node-btn.is-software .node-dot { background: var(--accent-software); }
-.node-btn.is-movement .node-dot { background: var(--accent-movement); }
-.node-btn.is-creative .node-dot { background: var(--accent-creative); }
+.node-row.is-software .node-tick { background: var(--accent-software); }
+.node-row.is-movement .node-tick { background: var(--accent-movement); }
+.node-row.is-creative .node-tick { background: var(--accent-creative); }
 
-.node-btn.is-software.is-active { color: var(--accent-software); }
-.node-btn.is-movement.is-active { color: var(--accent-movement); }
-.node-btn.is-creative.is-active { color: var(--accent-creative); }
-
+/* Ficha técnica: sin caja redondeada; regla superior como acento */
 .node-panel {
-  padding: var(--space-3);
-  background: var(--panel);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-md);
-  border-left-width: 3px;
+  margin-top: var(--space-3);
+  padding-top: var(--space-2);
+  border-top: 2px solid var(--line);
 }
 
-.node-panel.is-software { border-left-color: var(--accent-software); }
-.node-panel.is-movement { border-left-color: var(--accent-movement); }
-.node-panel.is-creative { border-left-color: var(--accent-creative); }
+.node-panel.is-software { border-top-color: var(--accent-software); }
+.node-panel.is-movement { border-top-color: var(--accent-movement); }
+.node-panel.is-creative { border-top-color: var(--accent-creative); }
 
-.panel-head {
-  display: flex;
-  align-items: baseline;
-  justify-content: space-between;
-  gap: var(--space-2);
+.panel-kicker {
+  margin: 0 0 0.35rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-dim);
 }
 
 .panel-title {
-  margin: 0;
-}
-
-.panel-accent {
-  font-size: 0.65rem;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--text-dim);
+  margin: 0 0 var(--space-2);
 }
 
 .panel-body {
   display: flex;
   align-items: center;
   gap: var(--space-3);
-  margin-top: var(--space-1);
 }
 
 .panel-graphic {
@@ -332,8 +336,15 @@ export default {
   align-items: center;
   min-height: 24px;
   margin-top: var(--space-2);
+  padding-bottom: 2px;
+  border-bottom: 1px solid var(--line);
   font-size: 0.75rem;
   letter-spacing: 0.06em;
+}
+
+.panel-link:hover {
+  border-bottom-color: var(--accent-software);
+  text-decoration: none;
 }
 
 @media (max-width: 860px) {
