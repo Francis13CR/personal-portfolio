@@ -1,7 +1,18 @@
 <template>
   <footer class="site-footer">
     <div class="container footer-inner">
-      <p class="footer-copy">© 2026 FRANCIS.M</p>
+      <p class="footer-copy">
+        <img
+          class="footer-mark"
+          src="/images/mascot-badge-96.png"
+          alt=""
+          width="28"
+          height="28"
+          loading="lazy"
+          decoding="async"
+        >
+        © 2026 FRANCIS.M
+      </p>
 
       <p class="footer-tags">SOFTWARE · MOVIMIENTO · MÚSICA · EXPERIMENTOS</p>
 
@@ -68,6 +79,18 @@ export default {
   font: 400 0.72rem/1.5 var(--font-mono);
   letter-spacing: 0.1em;
   color: var(--text-dim);
+}
+
+.footer-copy {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+
+.footer-mark {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
 }
 
 .footer-social {

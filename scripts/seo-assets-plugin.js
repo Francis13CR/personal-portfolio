@@ -81,8 +81,15 @@ class SeoAssetsPlugin {
             emit(file, fs.readFileSync(path.resolve(ROOT, file), 'utf8'));
           });
 
-          // Favicons (los archivos de imagen no se editan; solo se copian)
-          ['logo.ico', 'logo.svg', 'logo512.png'].forEach((file) => {
+          // Assets de la mascota y tarjeta social (los archivos de imagen no se editan; solo se copian)
+          [
+            'mascot-badge.ico',
+            'mascot-badge-96.png',
+            'mascot-badge-180.png',
+            'mascot-1024.webp',
+            'mascot-1024.jpg',
+            'og-card.jpg',
+          ].forEach((file) => {
             emit(`images/${file}`, fs.readFileSync(path.resolve(ROOT, 'assets/images', file)));
           });
 

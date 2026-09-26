@@ -9,7 +9,8 @@ export const SITE = {
   defaultTitle: 'Francis Meléndez — Software Developer & Programming Supervisor',
   defaultDescription:
     'Portafolio de Francis Meléndez: Software Developer y Programming Supervisor en Facture.cr. Software, sistemas y curiosidad. Systems, not just code.',
-  ogImage: 'https://francismch.dev/images/logo512.png',
+  ogImage: 'https://francismch.dev/images/og-card.jpg',
+  ogImageAlt: 'Francis Meléndez — Systems, not just code.',
 };
 
 function ensureMeta(attr, key) {
@@ -55,9 +56,11 @@ export function setMeta({ title, description }) {
   ensureMeta('property', 'og:title').setAttribute('content', fullTitle);
   ensureMeta('property', 'og:description').setAttribute('content', desc);
   ensureMeta('property', 'og:image').setAttribute('content', SITE.ogImage);
+  ensureMeta('property', 'og:image:alt').setAttribute('content', SITE.ogImageAlt);
   ensureMeta('name', 'twitter:title').setAttribute('content', fullTitle);
   ensureMeta('name', 'twitter:description').setAttribute('content', desc);
   ensureMeta('name', 'twitter:image').setAttribute('content', SITE.ogImage);
+  ensureMeta('name', 'twitter:image:alt').setAttribute('content', SITE.ogImageAlt);
 }
 
 // Actualiza canonical y og:url.
