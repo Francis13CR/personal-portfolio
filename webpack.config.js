@@ -1,5 +1,7 @@
 // webpack.config.js
 const path = require('path');
+const fs = require('fs');
+const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const WebpackObfuscator = require('webpack-obfuscator');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -60,7 +62,24 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html', // Path to your index.html file
     }),
-    new VueLoaderPlugin()
+    new VueLoaderPlugin(),
+    // Copia `_redirects` al directorio de publicación (Netlify) sin dependencias nuevas.
+    {
+      apply(compiler) {
+        compiler.hooks.thisCompilation.tap('CopyRedirectsPlugin', (compilation) => {
+          compilation.hooks.processAssets.tap(
+            {
+              name: 'CopyRedirectsPlugin',
+              stage: webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
+            },
+            () => {
+              const content = fs.readFileSync(path.resolve(__dirname, '_redirects'), 'utf8');
+              compilation.emitAsset('_redirects', new webpack.sources.RawSource(content));
+            }
+          );
+        });
+      },
+    }
   ], 
   resolve: {
     fallback: {

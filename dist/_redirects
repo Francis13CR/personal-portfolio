@@ -1,0 +1,5 @@
+/about            /sobre-mi          301
+/projects         /proyectos         301
+/projects/*       /proyectos/:splat  301
+/blog             /                  301
+/*                /index.html        200

@@ -81,7 +81,7 @@
     </section>
   </template>
 
-  <section v-else class="section page" aria-labelledby="no-encontrado-title">
+  <section v-else-if="!loading" class="section page" aria-labelledby="no-encontrado-title">
     <div class="container">
       <p class="section-label">Error</p>
       <h1 id="no-encontrado-title">Proyecto no encontrado</h1>
@@ -137,6 +137,7 @@ export default {
   methods: {
     async loadProject() {
       this.loading = true;
+      this.proyecto = null;
       try {
         const proyectos = await getBlogPosts();
         this.proyecto = findProjectBySlug(proyectos, this.$route.params.slug);
