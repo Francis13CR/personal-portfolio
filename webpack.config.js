@@ -40,6 +40,13 @@ module.exports = {
         generator: {
           filename: 'images/[name][ext][query]'
         }
+      },
+      {
+        test: /\.(woff2?|ttf|otf|eot)$/i,
+        type: 'asset/resource',
+        generator: {
+          filename: 'fonts/[name][ext][query]'
+        }
       }
     ]
   },
