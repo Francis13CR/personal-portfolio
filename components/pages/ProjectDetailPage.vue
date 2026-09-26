@@ -100,7 +100,7 @@
 
 <script>
 import { getBlogPosts } from '../../assets/js/projects-data.js';
-import { findProjectBySlug } from '../../assets/js/slug.js';
+import { findProjectBySlug, slugify } from '../../assets/js/slug.js';
 import {
   setSeo,
   setJsonLd,
@@ -163,7 +163,7 @@ export default {
       }
     },
     updateSeo() {
-      const path = `/proyectos/${this.$route.params.slug}`;
+      const path = `/proyectos/${slugify(this.$route.params.slug)}`;
       const crumbs = [
         { name: 'Inicio', path: '/' },
         { name: 'Proyectos', path: '/proyectos' },

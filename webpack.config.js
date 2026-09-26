@@ -61,7 +61,6 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: 'index.html', // Path to your index.html file
     }),
-    new VueLoaderPlugin(),
     // Emite _redirects, robots.txt, favicons y sitemap.xml en dist.
     new SeoAssetsPlugin()
   ], 
