@@ -31,6 +31,22 @@ body {
   text-rendering: optimizeLegibility;
 }
 
+/* La rejilla blueprint queda solo en los márgenes: el contenido descansa sobre
+   fondo sólido para que las líneas no crucen el texto (legibilidad). */
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  width: min(100%, var(--container));
+  margin-inline: auto;
+  background: var(--bg);
+  pointer-events: none;
+}
+
 h1,
 h2,
 h3,
