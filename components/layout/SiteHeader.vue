@@ -1,11 +1,12 @@
 <template>
-  <header class="site-header" :class="{ 'is-open': menuOpen }" @keydown.esc="closeMenu">
+  <header class="site-header" :class="{ 'is-open': menuOpen }" @keydown.esc="onEscape">
     <div class="container header-inner">
       <router-link to="/" class="brand" @click="closeMenu">
         FRANCIS<span class="brand-dot">.M</span>
       </router-link>
 
       <button
+        ref="toggle"
         class="menu-toggle"
         type="button"
         :aria-expanded="menuOpen ? 'true' : 'false'"
@@ -16,7 +17,7 @@
         <span class="icon" v-html="menuOpen ? icons.close : icons.menu"></span>
       </button>
 
-      <nav id="primary-nav" class="primary-nav" aria-label="Principal">
+      <nav id="primary-nav" ref="primaryNav" class="primary-nav" aria-label="Principal">
         <ul>
           <li>
             <router-link to="/" exact-active-class="is-active" @click="closeMenu">Inicio</router-link>
@@ -59,6 +60,23 @@ export default {
     closeMenu() {
       if (this.menuOpen) {
         this.menuOpen = false;
+      }
+    },
+    onEscape() {
+      if (!this.menuOpen) {
+        return;
+      }
+      const active = document.activeElement;
+      const insidePanel = this.$refs.primaryNav && this.$refs.primaryNav.contains(active);
+      this.menuOpen = false;
+      // Si el foco estaba dentro del panel que se oculta, devolverlo al botón
+      // para no perder la posición del teclado (WCAG 2.4.3).
+      if (insidePanel) {
+        this.$nextTick(() => {
+          if (this.$refs.toggle) {
+            this.$refs.toggle.focus();
+          }
+        });
       }
     },
   },
@@ -106,7 +124,7 @@ export default {
   padding: 0.5rem;
   background: none;
   color: var(--text);
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
   cursor: pointer;
 }
@@ -143,6 +161,8 @@ export default {
 
 .primary-nav a.is-active {
   color: var(--accent-software);
+  /* Señal no cromática de página actual (WCAG 1.4.1) */
+  box-shadow: inset 0 -2px 0 var(--accent-software);
 }
 
 @media (max-width: 720px) {

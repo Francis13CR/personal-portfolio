@@ -85,7 +85,7 @@ export default {
   width: 44px;
   height: 44px;
   color: var(--text-muted);
-  border: 1px solid var(--line);
+  border: 1px solid var(--border);
   border-radius: var(--radius-sm);
 }
 
