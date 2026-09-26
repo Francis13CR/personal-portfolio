@@ -21,7 +21,7 @@
               aria-controls="role-panel"
               @click="select(role.id)"
             >
-              <span class="role-mark" aria-hidden="true"></span>{{ role.label }}
+              <span class="role-icon" aria-hidden="true" v-html="roleIcons[role.id]"></span>{{ role.label }}
             </button>
           </li>
         </ul>
@@ -72,12 +72,14 @@
 <script>
 import { getBlogPosts } from '../../assets/js/projects-data.js';
 import { projectSlug } from '../../assets/js/slug.js';
+import { roleIcons } from '../../assets/js/icons.js';
 
 export default {
   name: 'WorkSection',
   data() {
     return {
       proyectos: [],
+      roleIcons,
       activeRoleId: 'fullstack',
       roles: [
         {
@@ -193,20 +195,22 @@ export default {
   border-color: var(--text-muted);
 }
 
-/* Señal no cromática del estado activo: marca rellena (WCAG 1.4.1) */
-.role-mark {
+/* Icono del rol (referencia a su título). El activo se distingue por color,
+   fondo tintado, borde y peso, no solo por el color (WCAG 1.4.1). */
+.role-icon {
   flex: none;
-  width: 7px;
-  height: 7px;
-  border: 1px solid currentColor;
+  display: inline-flex;
 }
 
-.role-chip.is-active .role-mark {
-  background: currentColor;
+.role-icon :deep(svg) {
+  width: 16px;
+  height: 16px;
+  display: block;
 }
 
 .role-chip.is-active {
   color: var(--text);
+  font-weight: 600;
 }
 
 .role-chip.is-software.is-active {

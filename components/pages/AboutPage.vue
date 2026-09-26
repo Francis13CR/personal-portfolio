@@ -198,7 +198,7 @@ export default {
         },
       ],
       fuera: [
-        'Taekwondo — incluso hice una app para el dojo.',
+        'Taekwondo — incluso hice una app para la academia.',
         'Running y calistenia para despejar la cabeza.',
         'Música: aprender instrumentos porque quiero saber tocarlos.',
         'Videojuegos: sistemas, estrategia y mundos que explorar.',

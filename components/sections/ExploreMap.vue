@@ -16,54 +16,47 @@
             role="img"
             aria-label="Mapa de intereses de Francis: conecta software, running, calistenia, taekwondo, juegos y música."
           >
-            <g stroke="rgba(120,160,220,0.32)" stroke-width="1">
-              <line x1="380" y1="75" x2="110" y2="255" />
-              <line x1="380" y1="75" x2="230" y2="305" />
-              <line x1="380" y1="75" x2="365" y2="320" />
-              <line x1="380" y1="75" x2="500" y2="305" />
-              <line x1="380" y1="75" x2="625" y2="255" />
-              <line x1="380" y1="75" x2="688" y2="155" />
+            <g class="map-links">
+              <line
+                v-for="n in nodes"
+                :key="'l-' + n.id"
+                x1="380"
+                y1="190"
+                :x2="n.x"
+                :y2="n.y"
+                :class="['map-link', 'is-' + n.accent, { 'is-active': n.id === activeId }]"
+              />
             </g>
 
-            <circle cx="380" cy="75" r="24" fill="none" stroke="rgba(72,176,247,0.35)" />
-            <circle cx="380" cy="75" r="12" fill="#48B0F7" />
-            <text
-              x="380"
-              y="48"
-              fill="#DCE6F5"
-              font-family="monospace"
-              font-size="15"
-              text-anchor="middle"
-              letter-spacing="3"
+            <g
+              v-for="n in nodes"
+              :key="n.id"
+              :class="['node-group', 'is-' + n.accent, { 'is-active': n.id === activeId, 'is-dim': n.id !== activeId }]"
             >
-              FRANCIS.M
-            </text>
+              <circle
+                :cx="n.x"
+                :cy="n.y"
+                :r="n.id === activeId ? 19 : 15"
+                class="node-halo"
+              />
+              <image
+                :href="iconUri(n)"
+                :x="n.x - (n.id === activeId ? 13 : 11)"
+                :y="n.y - (n.id === activeId ? 13 : 11)"
+                :width="n.id === activeId ? 26 : 22"
+                :height="n.id === activeId ? 26 : 22"
+              />
+              <text :x="n.lx" :y="n.ly" text-anchor="middle" class="node-label">
+                {{ n.label.toUpperCase() }}
+              </text>
+            </g>
 
-            <g font-family="monospace" font-size="11" text-anchor="middle" letter-spacing="1">
-              <g>
-                <circle cx="110" cy="255" r="7" fill="#48B0F7" />
-                <text x="110" y="285" fill="#DCE6F5">SOFTWARE</text>
-              </g>
-              <g>
-                <circle cx="230" cy="305" r="7" fill="#7FE0C0" />
-                <text x="230" y="335" fill="#DCE6F5">RUNNING</text>
-              </g>
-              <g>
-                <circle cx="365" cy="320" r="7" fill="#7FE0C0" />
-                <text x="365" y="350" fill="#DCE6F5">CALISTENIA</text>
-              </g>
-              <g>
-                <circle cx="500" cy="305" r="7" fill="#7FE0C0" />
-                <text x="500" y="335" fill="#DCE6F5">TAEKWONDO</text>
-              </g>
-              <g>
-                <circle cx="625" cy="255" r="7" fill="#E0A458" />
-                <text x="625" y="285" fill="#DCE6F5">JUEGOS</text>
-              </g>
-              <g>
-                <circle cx="688" cy="155" r="7" fill="#E0A458" />
-                <text x="720" y="159" fill="#DCE6F5" text-anchor="end">MÚSICA</text>
-              </g>
+            <g class="map-hub">
+              <circle cx="380" cy="190" r="46" class="hub" :class="'is-' + active.accent" />
+              <image :href="activeIconUri" x="357" y="150" width="46" height="46" />
+              <text x="380" y="216" text-anchor="middle" class="hub-label">
+                {{ active.label.toUpperCase() }}
+              </text>
             </g>
           </svg>
         </div>
@@ -99,7 +92,7 @@
             </p>
             <h3 id="node-panel-title" class="panel-title">{{ active.label }}</h3>
             <div class="panel-body">
-              <span class="panel-graphic" aria-hidden="true" v-html="active.graphic"></span>
+              <span class="panel-graphic" aria-hidden="true" v-html="skillIcons[active.id]"></span>
               <p class="panel-copy">{{ active.copy }}</p>
             </div>
             <router-link v-if="active.to" :to="active.to" class="panel-link mono">
@@ -116,19 +109,12 @@
 </template>
 
 <script>
-const graphics = {
-  software:
-    '<svg viewBox="0 0 150 40" width="150" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="10" width="30" height="20" rx="3"/><path d="M31 20h16"/><rect x="47" y="10" width="30" height="20" rx="3"/><path d="M77 20h16"/><rect x="93" y="10" width="30" height="20" rx="3"/></svg>',
-  running:
-    '<svg viewBox="0 0 150 40" width="150" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 34h146"/><polyline points="2,32 30,25 56,29 82,15 108,19 146,6"/></svg>',
-  calistenia:
-    '<svg viewBox="0 0 150 40" width="150" height="40" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round"><path d="M8 34V25"/><path d="M30 34V17"/><path d="M52 34V27"/><path d="M74 34V11"/><path d="M96 34V20"/><path d="M118 34V7"/><path d="M140 34V15"/></svg>',
-  taekwondo:
-    '<svg viewBox="0 0 150 40" width="150" height="40" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="75" cy="20" r="14"/><path d="M64 27L88 13"/></svg>',
-  juegos:
-    '<svg viewBox="0 0 150 40" width="150" height="40" fill="none" stroke="currentColor" stroke-width="2"><circle cx="30" cy="20" r="3" fill="currentColor" stroke="none"/><circle cx="50" cy="12" r="3" fill="currentColor" stroke="none"/><circle cx="50" cy="28" r="3" fill="currentColor" stroke="none"/><circle cx="70" cy="20" r="3" fill="currentColor" stroke="none"/><circle cx="90" cy="12" r="3" fill="currentColor" stroke="none"/><circle cx="90" cy="28" r="3" fill="currentColor" stroke="none"/><circle cx="110" cy="20" r="3" fill="currentColor" stroke="none"/></svg>',
-  musica:
-    '<svg viewBox="0 0 150 40" width="150" height="40" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round"><path d="M10 14v12"/><path d="M26 8v24"/><path d="M42 16v8"/><path d="M58 6v28"/><path d="M74 14v12"/><path d="M90 10v20"/><path d="M106 16v8"/><path d="M122 8v24"/><path d="M138 14v12"/></svg>',
+import { skillIcons, skillIconInner } from '../../assets/js/icons.js';
+
+const ACCENT_HEX = {
+  software: '#48B0F7',
+  movement: '#7FE0C0',
+  creative: '#E0A458',
 };
 
 export default {
@@ -136,52 +122,71 @@ export default {
   data() {
     return {
       activeId: 'software',
+      skillIcons,
       nodes: [
         {
           id: 'software',
           label: 'Software',
           accent: 'software',
-          copy: 'Desarrollo, coordino y despliego. Aquí vive el caso Facture.cr.',
+          copy: 'Desarrollo, coordino y despliego.',
           action: 'Ver trabajo',
           href: '#trabajo',
-          graphic: graphics.software,
+          x: 140,
+          y: 150,
+          lx: 140,
+          ly: 182,
         },
         {
           id: 'running',
           label: 'Running',
           accent: 'movement',
           copy: 'Correr para despejar la cabeza y medir el progreso.',
-          graphic: graphics.running,
+          x: 210,
+          y: 300,
+          lx: 210,
+          ly: 332,
         },
         {
           id: 'calistenia',
           label: 'Calistenia',
           accent: 'movement',
           copy: 'Fuerza, técnica y paciencia. Progreso lento y constante.',
-          graphic: graphics.calistenia,
+          x: 380,
+          y: 335,
+          lx: 380,
+          ly: 367,
         },
         {
           id: 'taekwondo',
           label: 'Taekwondo',
           accent: 'movement',
-          copy: 'El dojo me llevó a construir una app para los estudiantes.',
+          copy: 'La academia me llevó a construir una app para los estudiantes.',
           action: 'Ver la app',
           to: '/proyectos/taekwondo-fenix-app',
-          graphic: graphics.taekwondo,
+          x: 550,
+          y: 300,
+          lx: 550,
+          ly: 332,
         },
         {
           id: 'juegos',
           label: 'Juegos',
           accent: 'creative',
           copy: 'Sistemas, estrategia y mundos que explorar.',
-          graphic: graphics.juegos,
+          x: 620,
+          y: 150,
+          lx: 620,
+          ly: 182,
         },
         {
           id: 'musica',
           label: 'Música',
           accent: 'creative',
           copy: 'Aprender instrumentos simplemente porque quiero saber tocarlos.',
-          graphic: graphics.musica,
+          x: 380,
+          y: 45,
+          lx: 380,
+          ly: 80,
         },
       ],
     };
@@ -193,10 +198,22 @@ export default {
     activeIndex() {
       return this.nodes.findIndex((node) => node.id === this.activeId) + 1;
     },
+    activeIconUri() {
+      return this.iconUri(this.active);
+    },
   },
   methods: {
     select(id) {
       this.activeId = id;
+    },
+    // SVG con el color del acento incrustado, para usar en <image>.
+    iconUri(node) {
+      const stroke = ACCENT_HEX[node.accent];
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" ` +
+        `stroke="${stroke}" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">` +
+        `${skillIconInner[node.id]}</svg>`;
+      return `data:image/svg+xml,${encodeURIComponent(svg)}`;
     },
   },
 };
@@ -214,7 +231,7 @@ export default {
 .map-visual {
   padding: var(--space-2);
   background:
-    radial-gradient(ellipse at 50% 0%, rgba(72, 176, 247, 0.08), transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(72, 176, 247, 0.08), transparent 62%),
     var(--bg-2);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
@@ -224,6 +241,85 @@ export default {
   display: block;
   width: 100%;
   height: auto;
+}
+
+/* Conectores */
+.map-link {
+  stroke: rgba(120, 160, 220, 0.3);
+  stroke-width: 1;
+  transition: stroke 0.25s ease, stroke-width 0.25s ease, opacity 0.25s ease;
+}
+
+.map-link.is-active {
+  stroke-width: 2;
+}
+
+.map-link.is-active.is-software { stroke: var(--accent-software); }
+.map-link.is-active.is-movement { stroke: var(--accent-movement); }
+.map-link.is-active.is-creative { stroke: var(--accent-creative); }
+
+/* Nodos */
+.node-group {
+  transition: opacity 0.25s ease;
+}
+
+.node-group.is-dim {
+  opacity: 0.3;
+}
+
+.node-halo {
+  fill: var(--bg-2);
+  stroke: var(--line);
+  stroke-width: 1.2;
+  transition: stroke 0.25s ease, stroke-width 0.25s ease;
+}
+
+.node-group.is-active .node-halo {
+  stroke-width: 2;
+}
+
+.node-group.is-active.is-software .node-halo { stroke: var(--accent-software); }
+.node-group.is-active.is-movement .node-halo { stroke: var(--accent-movement); }
+.node-group.is-active.is-creative .node-halo { stroke: var(--accent-creative); }
+
+.node-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 1px;
+  fill: var(--text-muted);
+  paint-order: stroke;
+  stroke: var(--bg-2);
+  stroke-width: 4px;
+  stroke-linejoin: round;
+  transition: fill 0.25s ease;
+}
+
+.node-group.is-active .node-label {
+  fill: var(--text);
+}
+
+/* Hub central */
+.hub {
+  fill: var(--panel);
+  stroke: var(--line);
+  stroke-width: 1.5;
+  transition: stroke 0.25s ease;
+}
+
+.hub.is-software { stroke: var(--accent-software); }
+.hub.is-movement { stroke: var(--accent-movement); }
+.hub.is-creative { stroke: var(--accent-creative); }
+
+.hub-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  fill: var(--text);
+  paint-order: stroke;
+  stroke: var(--panel);
+  stroke-width: 4px;
+  stroke-linejoin: round;
 }
 
 /* Índice de nodos: filas alineadas por rejilla, sin píldoras */
@@ -320,6 +416,12 @@ export default {
 .panel-graphic {
   flex: none;
   display: inline-flex;
+}
+
+.panel-graphic :deep(svg) {
+  width: 44px;
+  height: 44px;
+  display: block;
 }
 
 .node-panel.is-software .panel-graphic { color: var(--accent-software); }
