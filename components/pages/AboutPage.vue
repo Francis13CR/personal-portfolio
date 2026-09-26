@@ -172,7 +172,7 @@ export default {
             'Implementación de Scrum + Kanban en ClickUp.',
             'Mentoría a juniors y practicantes del equipo.',
           ],
-          stack: ['PHP', 'Vue.js 3', 'Laravel', 'MySQL', 'Docker'],
+          stack: ['PHP', 'Vue.js 3', 'MySQL', 'Docker'],
         },
         {
           rol: 'Full Stack Developer',

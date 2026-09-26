@@ -86,7 +86,7 @@ export default {
           id: 'fullstack',
           label: 'Full Stack',
           accent: 'software',
-          copy: 'Desarrollo de punta a punta: frontend con Vue.js 3, backend con PHP y Laravel, MySQL y despliegue con Docker.',
+          copy: 'Desarrollo de punta a punta: frontend con Vue.js 3, backend con PHP y MySQL, y despliegue con Docker.',
         },
         {
           id: 'supervisor',
