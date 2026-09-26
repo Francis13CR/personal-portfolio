@@ -8,7 +8,7 @@
         uso para que las cosas salgan.
       </p>
 
-      <ol class="flow" aria-label="Flujo de trabajo">
+      <ol class="flow" role="list" aria-label="Flujo de trabajo">
         <li
           v-for="(step, i) in flow"
           :key="step"
@@ -29,13 +29,13 @@
 
     <div class="container projects-block">
       <h3 id="proyectos" class="projects-title">Proyectos</h3>
-      <ul class="project-list">
+      <ul class="project-list" role="list">
         <li v-for="(p, i) in proyectos" :key="p.id" class="project-row">
           <span class="project-num mono">{{ pad(i) }}</span>
           <div class="project-main">
             <h4 class="project-name">{{ shortTitle(p.title) }}</h4>
             <p class="project-desc">{{ shortDesc(p.description) }}</p>
-            <ul class="tech" aria-label="Tecnologías">
+            <ul class="tech" role="list" aria-label="Tecnologías">
               <li v-for="t in p.technologies.slice(0, 4)" :key="t" class="tech-chip mono">{{ t }}</li>
             </ul>
           </div>
@@ -227,6 +227,9 @@ export default {
 }
 
 .project-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   white-space: nowrap;

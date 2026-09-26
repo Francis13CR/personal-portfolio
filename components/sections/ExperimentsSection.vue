@@ -3,7 +3,7 @@
     <div class="container">
       <p class="section-label">05 / Experimentos</p>
       <h2 id="experimentos-title">Cosas que construyo por curiosidad</h2>
-      <ul class="exp-grid">
+      <ul class="exp-grid" role="list">
         <li v-for="exp in experiments" :key="exp.title" class="exp-card">
           <h3>{{ exp.title }}</h3>
           <p>{{ exp.copy }}</p>

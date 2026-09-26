@@ -74,7 +74,7 @@
         </div>
 
         <div class="map-control">
-          <ul class="node-list">
+          <ul class="node-list" role="list">
             <li v-for="node in nodes" :key="node.id">
               <button
                 type="button"
@@ -94,10 +94,11 @@
             class="node-panel"
             :class="'is-' + active.accent"
             role="region"
+            aria-labelledby="node-panel-title"
             aria-live="polite"
           >
             <div class="panel-head">
-              <h3 class="panel-title">{{ active.label }}</h3>
+              <h3 id="node-panel-title" class="panel-title">{{ active.label }}</h3>
               <span class="panel-accent mono" aria-hidden="true">{{ active.accent }}</span>
             </div>
             <div class="panel-body">
@@ -327,7 +328,9 @@ export default {
 }
 
 .panel-link {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
   margin-top: var(--space-2);
   font-size: 0.75rem;
   letter-spacing: 0.06em;
