@@ -8,7 +8,12 @@
         Trabajo en Facture.cr. Desarrollo, priorizo el backlog, refino tickets, asigno, reviso y
         garantizo que nada llegue a producción sin QA.
       </p>
-      <pre class="codeblock mono"><code>&gt; ahora_construyo_con:
+      <pre
+        class="codeblock mono"
+        role="region"
+        tabindex="0"
+        aria-label="Comandos y stack actual"
+      ><code>&gt; ahora_construyo_con:
   Vue · PHP · MySQL · APIs · automatización
 &gt; estado: <span class="code-ok">siempre aprendiendo.</span></code></pre>
     </div>

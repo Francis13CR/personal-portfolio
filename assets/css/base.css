@@ -146,6 +146,8 @@ pre {
   padding: 0.85rem 1.4rem;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);
+  background: transparent;
+  color: var(--text);
   font: 600 0.8rem/1 var(--font-mono);
   letter-spacing: 0.08em;
   text-align: center;
