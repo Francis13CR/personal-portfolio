@@ -54,8 +54,6 @@
   </template>
 
   <script>
-  import Swal from 'sweetalert2';
-  import "@fortawesome/fontawesome-free/css/all.min.css";
   export default {
     name: 'App',
     components: {
@@ -78,42 +76,7 @@
         }
       },
       showContact() {
-        Swal.fire({
-          title: "¡Contáctame! 📩",
-          html: `
-            <p><i class="fa-solid fa-envelope"></i>  <strong>Correo:</strong> <a id="correo" href="mailto:francismelendez134@gmail.com">francismelendez134@gmail.com</a> <button id="copiarCorreoBtn">📋</button></p>
-            <p><i class="fa-brands fa-linkedin"></i> <strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/francismch/" target="_blank">Mi perfil</a></p>
-          `,
-          icon: "info",
-          showCloseButton: true,
-          showConfirmButton: false,
-          didOpen: () => {
-            const copiarCorreoBtn = document.getElementById("copiarCorreoBtn");
-            if (copiarCorreoBtn) {
-              copiarCorreoBtn.addEventListener("click", this.copiarCorreo);
-            }
-          },
-          didDestroy: () => {
-            const copiarCorreoBtn = document.getElementById("copiarCorreoBtn");
-            if (copiarCorreoBtn) {
-              copiarCorreoBtn.removeEventListener("click", this.copiarCorreo);
-            }
-          }
-        }).then(() => {
-          //console.log("SweetAlert cerrado");
-        });
-      },
-      copiarCorreo() {
-        const correo = document.getElementById("correo").innerText;
-        navigator.clipboard.writeText(correo).then(() => {
-          Swal.fire({
-            title: "¡Copiado!",
-            text: "Correo copiado al portapapeles",
-            icon: "success",
-            timer: 1500,
-            showConfirmButton: false
-          });
-        });
+        this.$router.push('/contact');
       },
       closeNavbar() {
         const navbar = this.$refs.navbarNav;

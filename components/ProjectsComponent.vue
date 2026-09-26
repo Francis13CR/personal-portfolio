@@ -129,10 +129,6 @@
 
 <script>
 import { getProjectById } from '../assets/js/projects-data.js';
-import 'aos/dist/aos.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import AOS from 'aos';
-import Swal from 'sweetalert2';
 
 export default {
   name: 'ProjectsComponent',
@@ -156,31 +152,15 @@ export default {
     } else {
       this.loading = false;
     }
-
-    this.$nextTick(() => {
-      AOS.init({
-        disable: 'mobile',
-        duration: 800
-      });
-    });
   },
   methods: {
     goBack() {
       this.$router.push('/');
     },
     openImageModal(imageUrl) {
-      Swal.fire({
-        imageUrl: imageUrl,
-        imageAlt: 'Imagen del proyecto',
-        showCloseButton: true,
-        showConfirmButton: false,
-        background: '#333',
-        imageWidth: '90%',
-        imageHeight: 'auto',
-        customClass: {
-          popup: 'swal-custom-popup'
-        }
-      });
+      // Fase 0: SweetAlert2 fue removido. Fallback temporal hasta reemplazarlo
+      // por un <dialog> accesible en una fase posterior.
+      window.open(imageUrl, '_blank', 'noopener');
     }
   },
   watch: {

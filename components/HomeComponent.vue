@@ -263,12 +263,6 @@
 
 <script>
 import { getBlogPosts } from "../assets/js/projects-data.js";
-import 'aos/dist/aos.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import Swal from 'sweetalert2';
-import AOS from 'aos';
-import anime from 'animejs/lib/anime.es.js';
-import { Tooltip } from 'bootstrap';
 
 export default {
   name: "HomeComponent",
@@ -285,11 +279,6 @@ export default {
     console.log('%c¡Hola, curioso! 👋', 'color: #FFD43B; font-size: 18px; font-weight: bold;');
     console.log('%cSi estás leyendo esto, probablemente eres developer. Me cae bien.', 'color: #aaa; font-size: 13px;');
     console.log('%c→ github.com/Francis13CR', 'color: #FFD43B; font-size: 12px;');
-
-    // Tooltips Bootstrap
-    document.querySelectorAll('[data-bs-toggle="tooltip"]').forEach(el => {
-      new Tooltip(el);
-    });
 
     document.body.appendChild(document.createDocumentFragment());
     this.checkDevice();
@@ -349,13 +338,6 @@ export default {
       this.isLoading = false;
       const particules = document.querySelectorAll(".particule");
       particules.forEach((p) => p.remove());
-      this.$nextTick(() => {
-        AOS.init({
-          disable: 'mobile',
-          duration: 700,
-          once: true,
-        });
-      });
     },
   },
 };

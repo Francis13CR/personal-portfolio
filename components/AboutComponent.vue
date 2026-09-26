@@ -201,21 +201,8 @@
 </template>
 
 <script>
-import 'aos/dist/aos.css';
-import "@fortawesome/fontawesome-free/css/all.min.css";
-import AOS from 'aos';
-
 export default {
   name: 'AboutComponent',
-  mounted() {
-    this.$nextTick(() => {
-      AOS.init({
-        disable: 'mobile',
-        duration: 700,
-        once: true,
-      });
-    });
-  }
 }
 </script>
 
