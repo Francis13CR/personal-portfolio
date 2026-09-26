@@ -101,6 +101,13 @@
 <script>
 import { getBlogPosts } from '../../assets/js/projects-data.js';
 import { findProjectBySlug } from '../../assets/js/slug.js';
+import {
+  setSeo,
+  setJsonLd,
+  removeJsonLd,
+  breadcrumb,
+  softwareApplication,
+} from '../../assets/js/seo.js';
 
 export default {
   name: 'ProjectDetailPage',
@@ -125,6 +132,15 @@ export default {
     shortTitle() {
       return (this.proyecto && this.proyecto.title ? this.proyecto.title : '').split(' — ')[0];
     },
+    metaDescription() {
+      const text = (this.proyecto && this.proyecto.description ? this.proyecto.description : '')
+        .replace(/\s+/g, ' ')
+        .trim();
+      if (text.length <= 160) {
+        return text;
+      }
+      return `${text.slice(0, 160).replace(/\s\S*$/, '')}…`;
+    },
   },
   async mounted() {
     await this.loadProject();
@@ -143,7 +159,35 @@ export default {
         this.proyecto = findProjectBySlug(proyectos, this.$route.params.slug);
       } finally {
         this.loading = false;
+        this.updateSeo();
       }
+    },
+    updateSeo() {
+      const path = `/proyectos/${this.$route.params.slug}`;
+      const crumbs = [
+        { name: 'Inicio', path: '/' },
+        { name: 'Proyectos', path: '/proyectos' },
+      ];
+
+      if (!this.proyecto) {
+        setSeo({
+          title: 'Proyecto no encontrado — Francis Meléndez',
+          description: 'El proyecto que buscas no existe o se movió.',
+          path,
+          robots: 'noindex,follow',
+        });
+        setJsonLd('breadcrumb', breadcrumb(crumbs));
+        removeJsonLd('project');
+        return;
+      }
+
+      setSeo({
+        title: `${this.shortTitle} — Proyectos de Francis Meléndez`,
+        description: this.metaDescription,
+        path,
+      });
+      setJsonLd('breadcrumb', breadcrumb([...crumbs, { name: this.shortTitle, path }]));
+      setJsonLd('project', softwareApplication(this.proyecto));
     },
     imageAlt(index) {
       return `${this.shortTitle} — captura ${index + 1}`;

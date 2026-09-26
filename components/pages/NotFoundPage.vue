@@ -16,8 +16,20 @@
 </template>
 
 <script>
+import { setSeo, removeJsonLd } from '../../assets/js/seo.js';
+
 export default {
   name: 'NotFoundPage',
+  mounted() {
+    setSeo({
+      title: 'Página no encontrada — Francis Meléndez',
+      description: 'La página que buscas no existe o se movió.',
+      path: this.$route.path,
+      robots: 'noindex,follow',
+    });
+    removeJsonLd('breadcrumb');
+    removeJsonLd('project');
+  },
 };
 </script>
 

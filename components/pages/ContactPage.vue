@@ -93,6 +93,8 @@
 </template>
 
 <script>
+import { setSeo, setJsonLd, removeJsonLd, breadcrumb } from '../../assets/js/seo.js';
+
 const EMAIL = 'francismelendez134@gmail.com';
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -105,6 +107,19 @@ export default {
       status: '',
       copyStatus: '',
     };
+  },
+  mounted() {
+    setSeo({
+      title: 'Contacto — Francis Meléndez',
+      description:
+        'Escríbele a Francis Meléndez por correo, LinkedIn o GitHub. Formulario y correo directo.',
+      path: '/contacto',
+    });
+    setJsonLd('breadcrumb', breadcrumb([
+      { name: 'Inicio', path: '/' },
+      { name: 'Contacto', path: '/contacto' },
+    ]));
+    removeJsonLd('project');
   },
   methods: {
     validateField(field) {

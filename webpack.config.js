@@ -1,11 +1,10 @@
 // webpack.config.js
 const path = require('path');
-const fs = require('fs');
-const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const WebpackObfuscator = require('webpack-obfuscator');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { VueLoaderPlugin } = require('vue-loader');
+const SeoAssetsPlugin = require('./scripts/seo-assets-plugin');
 
 module.exports = {
   entry: './src/index.js', // Adjust this path to your main JS file
@@ -63,23 +62,8 @@ module.exports = {
       template: 'index.html', // Path to your index.html file
     }),
     new VueLoaderPlugin(),
-    // Copia `_redirects` al directorio de publicación (Netlify) sin dependencias nuevas.
-    {
-      apply(compiler) {
-        compiler.hooks.thisCompilation.tap('CopyRedirectsPlugin', (compilation) => {
-          compilation.hooks.processAssets.tap(
-            {
-              name: 'CopyRedirectsPlugin',
-              stage: webpack.Compilation.PROCESS_ASSETS_STAGE_ADDITIONAL,
-            },
-            () => {
-              const content = fs.readFileSync(path.resolve(__dirname, '_redirects'), 'utf8');
-              compilation.emitAsset('_redirects', new webpack.sources.RawSource(content));
-            }
-          );
-        });
-      },
-    }
+    // Emite _redirects, robots.txt, favicons y sitemap.xml en dist.
+    new SeoAssetsPlugin()
   ], 
   resolve: {
     fallback: {

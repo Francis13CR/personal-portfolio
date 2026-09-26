@@ -137,6 +137,8 @@
 </template>
 
 <script>
+import { setSeo, setJsonLd, removeJsonLd, breadcrumb } from '../../assets/js/seo.js';
+
 export default {
   name: 'AboutPage',
   data() {
@@ -198,6 +200,19 @@ export default {
         'Si lo puedo automatizar, lo automatizo.',
       ],
     };
+  },
+  mounted() {
+    setSeo({
+      title: 'Sobre mí — Francis Meléndez',
+      description:
+        'Francis Meléndez: Full Stack Developer y Programming Supervisor en Facture.cr. Bio, trayectoria, educación y cómo pienso.',
+      path: '/sobre-mi',
+    });
+    setJsonLd('breadcrumb', breadcrumb([
+      { name: 'Inicio', path: '/' },
+      { name: 'Sobre mí', path: '/sobre-mi' },
+    ]));
+    removeJsonLd('project');
   },
 };
 </script>

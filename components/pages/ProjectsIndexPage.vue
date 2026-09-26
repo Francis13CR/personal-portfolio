@@ -67,6 +67,7 @@
 import { getBlogPosts } from '../../assets/js/projects-data.js';
 import { projectSlug } from '../../assets/js/slug.js';
 import { icons } from '../../assets/js/icons.js';
+import { setSeo, setJsonLd, removeJsonLd, breadcrumb } from '../../assets/js/seo.js';
 
 export default {
   name: 'ProjectsIndexPage',
@@ -77,6 +78,18 @@ export default {
     };
   },
   async mounted() {
+    setSeo({
+      title: 'Proyectos — Francis Meléndez',
+      description:
+        'Índice de proyectos de Francis Meléndez: plataformas SaaS, herramientas web y apps en producción.',
+      path: '/proyectos',
+    });
+    setJsonLd('breadcrumb', breadcrumb([
+      { name: 'Inicio', path: '/' },
+      { name: 'Proyectos', path: '/proyectos' },
+    ]));
+    removeJsonLd('project');
+
     this.proyectos = await getBlogPosts();
   },
   methods: {

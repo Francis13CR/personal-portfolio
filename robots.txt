@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://francismch.dev/sitemap.xml

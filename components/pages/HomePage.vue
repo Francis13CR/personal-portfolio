@@ -16,6 +16,7 @@ import WorkSection from '../sections/WorkSection.vue';
 import NowSection from '../sections/NowSection.vue';
 import ExperimentsSection from '../sections/ExperimentsSection.vue';
 import ContactCta from '../sections/ContactCta.vue';
+import { setSeo, removeJsonLd } from '../../assets/js/seo.js';
 
 export default {
   name: 'HomePage',
@@ -26,6 +27,11 @@ export default {
     NowSection,
     ExperimentsSection,
     ContactCta,
+  },
+  mounted() {
+    setSeo({ path: '/' });
+    removeJsonLd('breadcrumb');
+    removeJsonLd('project');
   },
 };
 </script>
