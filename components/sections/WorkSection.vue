@@ -38,15 +38,14 @@
         <p class="role-kicker mono" aria-hidden="true">ROL</p>
         <h3 id="role-panel-title">{{ activeRole.label }}</h3>
         <p class="role-copy">{{ activeRole.copy }}</p>
+        <p class="role-result">
+          <span class="result-label mono">Resultado</span>{{ activeRole.result }}
+        </p>
       </div>
 
       <p class="flow-line mono">
         <span class="visually-hidden">Flujo de trabajo: </span>BACKLOG → REFINADO → DESARROLLO →
         REVISIÓN → QA → DESPLEGADO
-      </p>
-      <p class="impact">
-        Resultado: QA obligatorio antes de producción, menos trabajo por WhatsApp y tickets mejor
-        redactados.
       </p>
     </div>
 
@@ -87,36 +86,42 @@ export default {
           label: 'Full Stack',
           accent: 'software',
           copy: 'Desarrollo de punta a punta: frontend con Vue.js 3, backend con PHP y MySQL, y despliegue con Docker.',
+          result: 'Facturación electrónica, inventario y punto de venta en producción, usados por miles de negocios.',
         },
         {
           id: 'supervisor',
           label: 'Programming Supervisor',
           accent: 'software',
           copy: 'Lidero el equipo: priorizo el backlog, refino tickets, asigno, hago seguimiento y code review.',
+          result: 'Menos trabajo por WhatsApp, tickets mejor redactados y QA antes de producción.',
         },
         {
           id: 'procesos',
           label: 'Procesos',
           accent: 'movement',
           copy: 'Implementé Scrum + Kanban en ClickUp: stand-ups de 10 minutos, reglas claras y métricas (tiempo de resolución, bugs vs proyectos, tickets bloqueados).',
+          result: 'Backlog ordenado y un flujo medible con Scrum + Kanban en ClickUp.',
         },
         {
           id: 'qa',
           label: 'QA',
           accent: 'movement',
           copy: 'Nada llega a producción sin QA. Reviso antes de desplegar.',
+          result: 'Los despliegues pasan por revisión antes de producción.',
         },
         {
           id: 'automatizacion',
           label: 'Automatización',
           accent: 'creative',
           copy: 'Integro WhatsApp Business API y automatizo tareas repetitivas con bots.',
+          result: 'Tareas repetitivas resueltas con WhatsApp Business API y bots.',
         },
         {
           id: 'mentoria',
           label: 'Mentoría',
           accent: 'creative',
           copy: 'Acompaño a juniors y practicantes del equipo.',
+          result: 'Supervisión de tareas, acompañamiento y enseñanza en implementación y uso de la IA, más apoyo al pensamiento crítico en UX y reutilización.',
         },
       ],
     };
@@ -258,17 +263,29 @@ export default {
   color: var(--text-muted);
 }
 
+.role-result {
+  margin: var(--space-2) 0 0;
+  max-width: 72ch;
+  color: var(--text-muted);
+}
+
+.result-label {
+  display: inline-block;
+  margin-right: 0.5rem;
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+}
+
+.role-panel.is-software .result-label { color: var(--accent-software); }
+.role-panel.is-movement .result-label { color: var(--accent-movement); }
+.role-panel.is-creative .result-label { color: var(--accent-creative); }
+
 .flow-line {
   margin: var(--space-4) 0 0;
   font-size: 0.72rem;
   letter-spacing: 0.06em;
   color: var(--text-dim);
-}
-
-.impact {
-  margin: var(--space-2) 0 0;
-  max-width: 72ch;
-  color: var(--text-muted);
 }
 
 .projects-block {
