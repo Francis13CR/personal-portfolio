@@ -102,6 +102,9 @@ export default {
 }
 
 .brand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px; /* WCAG 2.5.8: objetivo >=24px */
   font: 600 0.95rem/1 var(--font-mono);
   letter-spacing: 0.14em;
   color: var(--text);

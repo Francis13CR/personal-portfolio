@@ -166,6 +166,9 @@ export default {
 }
 
 .cell-name a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px; /* WCAG 2.5.8: objetivo >=24px */
   font-size: 1rem;
 }
 
