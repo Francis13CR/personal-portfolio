@@ -89,6 +89,16 @@ class SeoAssetsPlugin {
             'mascot-1024.webp',
             'mascot-1024.jpg',
             'og-card.jpg',
+            // Mascotas pixel art por skill (mapa de intereses)
+            'camaron-software.png',
+            'camaron-running.png',
+            'camaron-calistenia.png',
+            'camaron-taekwondo.png',
+            'camaron-juegos.png',
+            'camaron-musica.png',
+            // Retrato de Sobre mí optimizado (webp + jpg de respaldo)
+            'yo2.webp',
+            'yo2.jpg',
           ].forEach((file) => {
             emit(`images/${file}`, fs.readFileSync(path.resolve(ROOT, 'assets/images', file)));
           });

@@ -2,14 +2,17 @@
   <section class="section page" aria-labelledby="sobre-mi-title" v-reveal>
     <div class="container about-intro">
       <div class="about-photo">
-        <img
-          src="/images/yo2.png"
-          alt="Francis Meléndez"
-          width="240"
-          height="240"
-          loading="lazy"
-          decoding="async"
-        />
+        <picture>
+          <source srcset="/images/yo2.webp" type="image/webp">
+          <img
+            src="/images/yo2.jpg"
+            alt="Francis Meléndez"
+            width="240"
+            height="240"
+            loading="lazy"
+            decoding="async"
+          />
+        </picture>
       </div>
       <div>
         <p class="section-label">Sobre mí</p>

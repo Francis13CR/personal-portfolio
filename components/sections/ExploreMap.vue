@@ -9,56 +9,72 @@
       </p>
 
       <div class="map-layout">
-        <div class="map-visual">
-          <svg
-            class="map-svg"
-            viewBox="0 0 760 380"
-            role="img"
-            aria-label="Mapa de intereses de Francis: conecta software, running, calistenia, taekwondo, juegos y música."
-          >
-            <g class="map-links">
-              <line
-                v-for="n in nodes"
-                :key="'l-' + n.id"
-                x1="380"
-                y1="190"
-                :x2="n.x"
-                :y2="n.y"
-                :class="['map-link', 'is-' + n.accent, { 'is-active': n.id === activeId }]"
-              />
-            </g>
-
-            <g
-              v-for="n in nodes"
-              :key="n.id"
-              :class="['node-group', 'is-' + n.accent, { 'is-active': n.id === activeId, 'is-dim': n.id !== activeId }]"
+        <div class="map-left">
+          <div class="map-visual">
+            <svg
+              class="map-svg"
+              viewBox="0 0 760 380"
+              role="img"
+              aria-label="Mapa de intereses de Francis: conecta software, running, calistenia, taekwondo, juegos y música."
             >
-              <circle
-                :cx="n.x"
-                :cy="n.y"
-                :r="n.id === activeId ? 19 : 15"
-                class="node-halo"
-              />
-              <image
-                :href="iconUri(n)"
-                :x="n.x - (n.id === activeId ? 13 : 11)"
-                :y="n.y - (n.id === activeId ? 13 : 11)"
-                :width="n.id === activeId ? 26 : 22"
-                :height="n.id === activeId ? 26 : 22"
-              />
-              <text :x="n.lx" :y="n.ly" text-anchor="middle" class="node-label">
-                {{ n.label.toUpperCase() }}
-              </text>
-            </g>
+              <g class="map-links">
+                <line
+                  v-for="n in nodes"
+                  :key="'l-' + n.id"
+                  x1="380"
+                  y1="190"
+                  :x2="n.x"
+                  :y2="n.y"
+                  :class="['map-link', 'is-' + n.accent, { 'is-active': n.id === activeId }]"
+                />
+              </g>
+  
+              <g
+                v-for="n in nodes"
+                :key="n.id"
+                :class="['node-group', 'is-' + n.accent, { 'is-active': n.id === activeId, 'is-dim': n.id !== activeId }]"
+              >
+                <circle
+                  :cx="n.x"
+                  :cy="n.y"
+                  :r="n.id === activeId ? 19 : 15"
+                  class="node-halo"
+                />
+                <image
+                  :href="iconUri(n)"
+                  :x="n.x - (n.id === activeId ? 13 : 11)"
+                  :y="n.y - (n.id === activeId ? 13 : 11)"
+                  :width="n.id === activeId ? 26 : 22"
+                  :height="n.id === activeId ? 26 : 22"
+                />
+                <text :x="n.lx" :y="n.ly" text-anchor="middle" class="node-label">
+                  {{ n.label.toUpperCase() }}
+                </text>
+              </g>
+  
+              <g class="map-hub">
+                <circle cx="380" cy="190" r="46" class="hub" :class="'is-' + active.accent" />
+                <image :href="activeIconUri" x="357" y="150" width="46" height="46" />
+                <text x="380" y="216" text-anchor="middle" class="hub-label">
+                  {{ active.label.toUpperCase() }}
+                </text>
+              </g>
+            </svg>
+          </div>
 
-            <g class="map-hub">
-              <circle cx="380" cy="190" r="46" class="hub" :class="'is-' + active.accent" />
-              <image :href="activeIconUri" x="357" y="150" width="46" height="46" />
-              <text x="380" y="216" text-anchor="middle" class="hub-label">
-                {{ active.label.toUpperCase() }}
-              </text>
-            </g>
-          </svg>
+          <figure class="map-mascot">
+            <transition name="mascot-fade" mode="out-in">
+              <img
+                :key="active.id"
+                :src="active.mascot"
+                :alt="'Mascota pixel art del camarón: ' + active.label"
+                :width="active.mw"
+                :height="active.mh"
+                loading="lazy"
+                decoding="async"
+              />
+            </transition>
+          </figure>
         </div>
 
         <div class="map-control">
@@ -127,6 +143,9 @@ export default {
         {
           id: 'software',
           label: 'Software',
+          mascot: '/images/camaron-software.png',
+          mw: 147,
+          mh: 160,
           accent: 'software',
           copy: 'Desarrollo, coordino y despliego.',
           action: 'Ver trabajo',
@@ -139,6 +158,9 @@ export default {
         {
           id: 'running',
           label: 'Running',
+          mascot: '/images/camaron-running.png',
+          mw: 162,
+          mh: 160,
           accent: 'movement',
           copy: 'Correr para despejar la cabeza y medir el progreso.',
           x: 210,
@@ -149,6 +171,9 @@ export default {
         {
           id: 'calistenia',
           label: 'Calistenia',
+          mascot: '/images/camaron-calistenia.png',
+          mw: 74,
+          mh: 160,
           accent: 'movement',
           copy: 'Fuerza, técnica y paciencia. Progreso lento y constante.',
           x: 380,
@@ -159,6 +184,9 @@ export default {
         {
           id: 'taekwondo',
           label: 'Taekwondo',
+          mascot: '/images/camaron-taekwondo.png',
+          mw: 157,
+          mh: 160,
           accent: 'movement',
           copy: 'La academia me llevó a construir una app para los estudiantes.',
           action: 'Ver la app',
@@ -171,6 +199,9 @@ export default {
         {
           id: 'juegos',
           label: 'Juegos',
+          mascot: '/images/camaron-juegos.png',
+          mw: 159,
+          mh: 160,
           accent: 'creative',
           copy: 'Sistemas, estrategia y mundos que explorar.',
           x: 620,
@@ -181,6 +212,9 @@ export default {
         {
           id: 'musica',
           label: 'Música',
+          mascot: '/images/camaron-musica.png',
+          mw: 162,
+          mh: 160,
           accent: 'creative',
           copy: 'Aprender instrumentos simplemente porque quiero saber tocarlos.',
           x: 380,
@@ -235,6 +269,45 @@ export default {
     var(--bg-2);
   border: 1px solid var(--line);
   border-radius: var(--radius-lg);
+}
+
+.map-left {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+/* Mascota pixel art del skill activo, debajo del card del gráfico */
+.map-mascot {
+  margin: 0;
+  min-height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.map-mascot img {
+  display: block;
+  height: 80px;
+  width: auto;
+  max-width: 100%;
+  image-rendering: pixelated;
+  filter: drop-shadow(0 6px 12px rgba(0, 0, 0, 0.35));
+}
+
+.mascot-fade-enter-active,
+.mascot-fade-leave-active {
+  transition: opacity 0.22s ease, transform 0.22s ease;
+}
+
+.mascot-fade-enter-from {
+  opacity: 0;
+  transform: translateY(8px);
+}
+
+.mascot-fade-leave-to {
+  opacity: 0;
+  transform: translateY(-8px);
 }
 
 .map-svg {

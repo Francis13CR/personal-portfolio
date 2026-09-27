@@ -47,6 +47,12 @@ body::after {
   pointer-events: none;
 }
 
+/* Reserva la altura del viewport en el shell: evita que el footer salte hacia
+   abajo cuando el chunk de ruta carga en diferido (CLS del arranque SPA). */
+main {
+  min-height: 100vh;
+}
+
 h1,
 h2,
 h3,
