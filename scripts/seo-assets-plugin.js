@@ -14,6 +14,7 @@ const STATIC_ROUTES = [
   { path: '/proyectos', changefreq: 'monthly', priority: '0.9' },
   { path: '/sobre-mi', changefreq: 'yearly', priority: '0.8' },
   { path: '/contacto', changefreq: 'yearly', priority: '0.7' },
+  { path: '/accesibilidad', changefreq: 'yearly', priority: '0.5' },
 ];
 
 // Mismo algoritmo que assets/js/slug.js (se duplica aquí porque el build es CommonJS).
@@ -99,6 +100,9 @@ class SeoAssetsPlugin {
             // Retrato de Sobre mí optimizado (webp + jpg de respaldo)
             'yo2.webp',
             'yo2.jpg',
+            // Distintivo oficial de conformidad WCAG 2.2 AA (W3C)
+            'wcag22AA.svg',
+            'wcag22AA-blue.svg',
           ].forEach((file) => {
             emit(`images/${file}`, fs.readFileSync(path.resolve(ROOT, 'assets/images', file)));
           });

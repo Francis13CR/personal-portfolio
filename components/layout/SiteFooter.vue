@@ -16,6 +16,10 @@
 
       <p class="footer-tags">SOFTWARE · MOVIMIENTO · MÚSICA · EXPERIMENTOS</p>
 
+      <p class="footer-legal">
+        <router-link to="/accesibilidad">Accesibilidad</router-link>
+      </p>
+
       <ul class="footer-social">
         <li>
           <a
@@ -79,6 +83,20 @@ export default {
   font: 400 0.72rem/1.5 var(--font-mono);
   letter-spacing: 0.1em;
   color: var(--text-dim);
+}
+
+.footer-legal {
+  margin: 0;
+  font: 400 0.72rem/1.5 var(--font-mono);
+  letter-spacing: 0.1em;
+}
+
+.footer-legal a {
+  color: var(--text-muted);
+}
+
+.footer-legal a:hover {
+  color: var(--accent-software);
 }
 
 .footer-copy {

@@ -9,6 +9,8 @@ const ProjectDetailPage = () =>
 const AboutPage = () => import(/* webpackChunkName: "sobre-mi" */ '../components/pages/AboutPage.vue');
 const ContactPage = () =>
   import(/* webpackChunkName: "contacto" */ '../components/pages/ContactPage.vue');
+const AccessibilityPage = () =>
+  import(/* webpackChunkName: "accesibilidad" */ '../components/pages/AccessibilityPage.vue');
 const NotFoundPage = () =>
   import(/* webpackChunkName: "no-encontrado" */ '../components/pages/NotFoundPage.vue');
 
@@ -18,6 +20,7 @@ const routes = [
   { path: '/proyectos/:slug', name: 'proyecto-detalle', component: ProjectDetailPage },
   { path: '/sobre-mi', name: 'sobre-mi', component: AboutPage },
   { path: '/contacto', name: 'contacto', component: ContactPage },
+  { path: '/accesibilidad', name: 'accesibilidad', component: AccessibilityPage },
   { path: '/404', name: 'no-encontrado', component: NotFoundPage },
   { path: '/:pathMatch(.*)*', name: 'catch-all', component: NotFoundPage },
 ];
