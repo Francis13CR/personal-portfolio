@@ -27,7 +27,7 @@ const proyectos = [
       '/images/cabys_busqueda.png'
     ],
     technologies: ['Vue.js', 'JavaScript', 'CSS3', 'API CABYS', 'Responsive Design', 'PWA'],
-    link: 'https://buscadorcabys.francismch.dev/?version=2',
+    link: 'https://buscadorcabys.com/',
     github: null
   },
   {
